@@ -19,7 +19,7 @@
 <body>
 <div align="center">
     <h2>后台管理</h2>
-    <form action="login">
+    <form action="login" method="post">
         <h4>管理员登录</h4>
         <table>
             <tr>

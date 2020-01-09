@@ -9,7 +9,7 @@
 <html>
 <script>
   function login() {
-      location.href = "author-admin.jsp";
+      location.href = "login.jsp";
     
   }
 </script>

@@ -18,7 +18,7 @@ public class AuthorDao implements AuthorInterface {
     public boolean authorLogin(Author author) {
         try {
             connection = DBUtil.getConnection();
-            String sql = "SELECT * FROM author WHERE author_id=? AND uthor_password=?";
+            String sql = "SELECT * FROM author WHERE author_id=? AND author_password=?";
             assert connection != null;
             preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1, author.getAuthorId());
