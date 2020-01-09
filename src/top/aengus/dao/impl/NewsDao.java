@@ -11,6 +11,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.sql.Date;
 import java.util.List;
+import java.util.Locale;
 
 /**
  * @author Aengus Sun
@@ -28,16 +29,15 @@ public class NewsDao implements NewsInterface {
     public boolean addNews(String authorId, News news) {
         try {
             connection = DBUtil.getConnection();
-            String sql = "INSERT INTO `news`(news_title, news_content, news_post_date, news_update_date, keywords, author_id, news_category) VALUES (?,?,?,?,?,?,?)";
+            String sql = "INSERT INTO `news`(news_title, news_content, news_post_date, keywords, author_id, news_category) VALUES (?,?,?,?,?,?,?)";
             assert connection != null;
             preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1, news.getNewsTitle());
             preparedStatement.setString(2, news.getNewsContent());
             preparedStatement.setDate(3, news.getNewsPostDate());
-            preparedStatement.setDate(4, news.getNewsUpdateDate());
-            preparedStatement.setString(5, news.getKeywords());
-            preparedStatement.setString(6, news.getAuthorId());
-            preparedStatement.setString(7, news.getNewsCategory());
+            preparedStatement.setString(4, news.getKeywords());
+            preparedStatement.setString(5, news.getAuthorId());
+            preparedStatement.setString(6, news.getNewsCategory());
             return preparedStatement.executeUpdate() == 1;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -45,6 +45,74 @@ public class NewsDao implements NewsInterface {
             DBUtil.close(connection, preparedStatement, resultSet);
         }
         return false;
+    }
+
+    @Override
+    public int editNewsByNewsId(String adminId, String authorId, News latestNews) {
+        int res = 0;
+        connection = DBUtil.getConnection();
+        assert connection != null;
+        try {
+            if (adminId != null && authorId == null) {
+                String sql = "UPDATE `news` set news_title=?,set news_content=?, set news_update_date=?,set keywords=?,set author_id=?,set news_category=?)";
+                preparedStatement = connection.prepareStatement(sql);
+                preparedStatement.setString(1, latestNews.getNewsTitle());
+                preparedStatement.setString(2, latestNews.getNewsContent());
+                preparedStatement.setDate(3, latestNews.getNewsUpdateDate());
+                preparedStatement.setString(4, latestNews.getKeywords());
+                preparedStatement.setString(5, latestNews.getAuthorId());
+                preparedStatement.setString(6, latestNews.getNewsCategory());
+                return preparedStatement.executeUpdate();
+            } else if (adminId == null && authorId != null) {
+                String sql = "UPDATE `news` set news_title=?,set news_content=?, set news_update_date=?,set keywords=?,set author_id=?,set news_category=?) WHERE author_id=" + authorId;
+                preparedStatement = connection.prepareStatement(sql);
+                preparedStatement.setString(1, latestNews.getNewsTitle());
+                preparedStatement.setString(2, latestNews.getNewsContent());
+                preparedStatement.setDate(3, latestNews.getNewsUpdateDate());
+                preparedStatement.setString(4, latestNews.getKeywords());
+                preparedStatement.setString(5, latestNews.getAuthorId());
+                preparedStatement.setString(6, latestNews.getNewsCategory());
+                try {
+                    res = preparedStatement.executeUpdate();
+                } catch (SQLException e) {
+                    res = -1;
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            DBUtil.close(connection, preparedStatement, resultSet);
+        }
+        return res;
+    }
+
+    @Override
+    public int deleteNewsByNewsId(String adminId, String authorId, int newsId) {
+        int res = 0;
+        connection = DBUtil.getConnection();
+        assert connection != null;
+        try {
+            if (adminId != null && authorId == null) {
+                String sql = "DELETE*FROM `news` where newsId=?";
+                preparedStatement = connection.prepareStatement(sql);
+                preparedStatement.setInt(1, newsId);
+                return preparedStatement.executeUpdate();
+            } else if (adminId == null && authorId != null) {
+                String sql = "UPDATE `news` set news_title=?,set news_content=?, set news_update_date=?,set keywords=?,set author_id=?,set news_category=?)WHERE author_id=" + authorId;
+                preparedStatement = connection.prepareStatement(sql);
+                preparedStatement.setInt(1, newsId);
+                try {
+                    res = preparedStatement.executeUpdate();
+                } catch (SQLException e) {
+                    res = -1;
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            DBUtil.close(connection, preparedStatement, resultSet);
+        }
+        return res;
     }
 
     @Override
@@ -83,18 +151,36 @@ public class NewsDao implements NewsInterface {
 
     @Override
     public List<News> getNewsByCategory(String category) {
-        return null;
+        List<News> list = new ArrayList<>();
+        try{
+        String sql = "select * from student where category="+category;
+        assert connection != null;
+        preparedStatement = connection.prepareStatement(sql);
+        resultSet = preparedStatement.executeQuery();
+        while (resultSet.next()) {
+            int newsId = resultSet.getInt("news_id");
+            String c_title = resultSet.getString("news_title");
+            String c_content = resultSet.getString("news_content");
+            Date c_postDate = resultSet.getDate("news_post_date");
+            Date c_updateDate = resultSet.getDate("news_update_date");
+            String c_keywords = resultSet.getString("keywords");
+            String c_authorId = resultSet.getString("author_id");
+            int c_viewCount = resultSet.getInt("view_count");
+            list.add(new News(newsId, c_title, c_content, c_postDate, c_updateDate, c_keywords, c_authorId,category,c_viewCount));
+        }
+    } catch(
+    SQLException e)
+
+    {
+        e.printStackTrace();
+    } finally
+
+    {
+        DBUtil.close(connection, preparedStatement, resultSet);
+    }
+        return list;
     }
 
-    @Override
-    public int deleteNewsByNewsId(String adminId, String authorId, int newsId) {
-        return 0;
-    }
-
-    @Override
-    public int editNewsByNewsId(String adminId, String authorId, News latestNews) {
-        return 0;
-    }
 
     public static void main(String[] args) {
         List<News> temp = new NewsDao().getAllNews();
