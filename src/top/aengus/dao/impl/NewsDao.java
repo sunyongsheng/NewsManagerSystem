@@ -167,8 +167,7 @@ public class NewsDao implements NewsInterface {
                 int c_viewCount = resultSet.getInt("view_count");
                 list.add(new News(newsId, c_title, c_content, c_postDate, c_updateDate, c_keywords, c_authorId, category, c_viewCount));
             }
-        } catch (
-                SQLException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         } finally {
             DBUtil.close(connection, preparedStatement, resultSet);

@@ -27,6 +27,8 @@ public class AuthorDao implements AuthorInterface {
             return resultSet.next();
         } catch (SQLException e) {
             e.printStackTrace();
+        } finally {
+            DBUtil.close(connection, preparedStatement, resultSet);
         }
         return false;
     }

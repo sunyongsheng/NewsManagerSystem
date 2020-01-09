@@ -34,6 +34,8 @@ public class AdminDao implements AdminInterface {
 
         } catch (SQLException e) {
             e.printStackTrace();
+        } finally {
+            DBUtil.close(connection, preparedStatement, resultSet);
         }
         return false;
     }
