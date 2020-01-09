@@ -38,3 +38,11 @@
 | admin_id       | varchar | 100  |
 | admin_password | varchar | 30   |
 
+# 页面
+```
+|- index.jsp    // 主页
+|- login.jsp    // 登录页
+|- author-admin.jsp    // 作者管理页面
+|- author-edit.jsp     // 作者编辑新闻页面
+|- admin.jsp    // 管理员页面
+```
