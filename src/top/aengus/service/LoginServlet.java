@@ -35,13 +35,13 @@ public class LoginServlet extends HttpServlet {
             request.setAttribute("user", "admin");
             HttpSession session = request.getSession();
             session.setAttribute("userMessage", username);
-            request.getRequestDispatcher("admin.jsp").forward(request, response);
+            request.getRequestDispatcher("getAllNews").forward(request, response);
         } else if (authorInterface.authorLogin(author)) {
             // 作者登录成功
             request.setAttribute("user", "author");
             HttpSession session = request.getSession();
             session.setAttribute("userMessage", username);
-            request.getRequestDispatcher("author-admin.jsp").forward(request, response);
+            request.getRequestDispatcher("getAllNews").forward(request, response);
         } else {
             // 登录失败
             request.setAttribute("user", null);
