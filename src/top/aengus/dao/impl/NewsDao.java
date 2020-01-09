@@ -8,9 +8,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Date;
+import java.sql.Date;
 import java.util.List;
 
 /**
@@ -24,6 +23,29 @@ public class NewsDao implements NewsInterface {
     Connection connection;
     PreparedStatement preparedStatement;
     ResultSet resultSet;
+
+    @Override
+    public boolean addNews(String authorId, News news) {
+        try {
+            connection = DBUtil.getConnection();
+            String sql = "INSERT INTO `news`(news_title, news_content, news_post_date, news_update_date, keywords, author_id, news_category) VALUES (?,?,?,?,?,?,?)";
+            assert connection != null;
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, news.getNewsTitle());
+            preparedStatement.setString(2, news.getNewsContent());
+            preparedStatement.setDate(3, news.getNewsPostDate());
+            preparedStatement.setDate(4, news.getNewsUpdateDate());
+            preparedStatement.setString(5, news.getKeywords());
+            preparedStatement.setString(6, news.getAuthorId());
+            preparedStatement.setString(7, news.getNewsCategory());
+            return preparedStatement.executeUpdate() == 1;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            DBUtil.close(connection, preparedStatement, resultSet);
+        }
+        return false;
+    }
 
     @Override
     public List<News> getAllNews() {
@@ -48,6 +70,8 @@ public class NewsDao implements NewsInterface {
             }
         } catch (SQLException e) {
             e.printStackTrace();
+        } finally {
+            DBUtil.close(connection, preparedStatement, resultSet);
         }
         return result;
     }
