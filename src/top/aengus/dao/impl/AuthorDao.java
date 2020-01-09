@@ -2,6 +2,7 @@ package top.aengus.dao.impl;
 
 import top.aengus.dao.interfaces.AdminInterface;
 import top.aengus.dao.interfaces.AuthorInterface;
+import top.aengus.pojo.Admin;
 import top.aengus.pojo.Author;
 import top.aengus.utils.DBUtil;
 
@@ -20,13 +21,23 @@ public class AuthorDao implements AuthorInterface {
         try {
             connection = DBUtil.getConnection();
             String sql = "Select * from author u where u.author_id=? and u.author_password=?";
+            assert connection != null;
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, author.getAuthorId());
+            preparedStatement.setString(2, author.getAuthorPassword());
+            resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                return true;
+            } else return false;
 
 
-        } catch (Exception e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
 
 
         return false;
     }
+
+
 }
