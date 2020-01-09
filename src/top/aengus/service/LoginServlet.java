@@ -12,6 +12,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 /**
@@ -31,14 +32,19 @@ public class LoginServlet extends HttpServlet {
         Author author = new Author(username, password, null);
         if (adminInterface.adminLogin(admin)) {
             // 管理员登录成功
-            request.setAttribute("userMessage", username);
+            request.setAttribute("user", "admin");
+            HttpSession session = request.getSession();
+            session.setAttribute("userMessage", username);
             request.getRequestDispatcher("admin.jsp").forward(request, response);
         } else if (authorInterface.authorLogin(author)) {
             // 作者登录成功
-            request.setAttribute("userMessage", username);
+            request.setAttribute("user", "author");
+            HttpSession session = request.getSession();
+            session.setAttribute("userMessage", username);
             request.getRequestDispatcher("author-admin.jsp").forward(request, response);
         } else {
             // 登录失败
+            request.setAttribute("user", null);
             request.setAttribute("loginMessage", "登陆失败，用户名或密码错误");
             request.getRequestDispatcher("login.jsp").forward(request, response);
         }
