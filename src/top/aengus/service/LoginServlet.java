@@ -46,7 +46,7 @@ public class LoginServlet extends HttpServlet {
             // 登录失败
             request.setAttribute("user", null);
             request.setAttribute("loginMessage", "登陆失败，用户名或密码错误");
-            request.getRequestDispatcher("login.jsp").forward(request, response);
+            request.getRequestDispatcher("getAllNews").forward(request, response);
         }
     }
 
