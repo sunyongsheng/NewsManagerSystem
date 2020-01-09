@@ -138,7 +138,7 @@
 
         <c:forEach items="${newsList}" var="news">
             <tr>
-                <td align="center"><input type="checkbox" value="${stu.sno}" name="chk" onclick="unchk(this)"></td>
+                <td align="center"><input type="checkbox" value="${news.news_id}" name="chk" onclick="unchk(this)"></td>
                 <td align="center">${news.news_title}</td>
                 <td align="center">${news.news_post_date}</td>
                 <td align="right">${news.news_update_date}</td>
