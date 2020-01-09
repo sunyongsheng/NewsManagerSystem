@@ -60,7 +60,7 @@ public interface NewsInterface {
      * @param adminId 管理员ID
      * @param authorId 作者ID
      * @param latestNews 更新后的新闻
-     * @return 0：删除失败，未知错误；1：删除成功；-1：删除失败，作者无权限
+     * @return 0：删除失败，未知错误；1：删除成功；-1：编辑失败，作者无权限
      */
     int editNewsByNewsId(String adminId, String authorId, News latestNews);
 }
