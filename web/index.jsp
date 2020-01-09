@@ -10,7 +10,6 @@
 <script>
   function login() {
       location.href = "login.jsp";
-    
   }
 </script>
   <head>
