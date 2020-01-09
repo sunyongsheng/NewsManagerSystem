@@ -11,6 +11,15 @@ import java.util.List;
  * @since 2020/1/9
  */
 public interface NewsInterface {
+
+    /**
+     * 作者ID为[authorId]的作者添加了一篇新闻
+     * @param authorId 作者ID
+     * @param news 添加的新闻
+     * @return 成功与否
+     */
+    boolean addNews(String authorId, News news);
+
     /**
      * 获取所有的新闻
      * @return 新闻组成的List

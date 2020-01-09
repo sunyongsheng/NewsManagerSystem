@@ -1,8 +1,7 @@
 package top.aengus.pojo;
 
 import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
-import java.util.Date;
+import java.sql.Date;
 
 /**
  * @author Aengus Sun
