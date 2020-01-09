@@ -6,30 +6,30 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <title>管理员界面</title>
+    <title>读者界面</title>
 </head>
 <script>
-    function addnews() {
+    function addNews() {
         location.href="add.jsp";
     }
 
-    function editnews(){
+    function editNews(){
         //首先判断用户是否选择了要编辑的记录
         var chks = document.getElementsByName("chk");
-
         var count = 0;//用来记录用户选择的记录数
 
         var index = 0;//用来记录被选中的复选框的序号
         for(var i=0; i<chks.length; i++){
-            if(chks[i].checked == true) {
+            if (chks[i].checked) {
                 count ++;//等价于count + 1
                 index = i;
             }
         }
         //判断用户选择的记录数是否符合要求
-        if(count == 0){
+        if(count === 0){
             alert("请选择要编辑的新闻");
         }else if(count > 1){
             alert("只能选择一条数据进行编辑");
@@ -49,14 +49,14 @@
 
     }
 
-    function delnews(){
+    function delNews(){
         //获取所有复选框,查看是否选择了记录
         var chks = document.getElementsByName("chk");
 
         var news_ids = ""; //用来存储要删除的学生学号
 
         for(var i=0; i<chks.length; i++){
-            if(chks[i].checked == true){
+            if(chks[i].checked){
                 //当前复选框被选中,获取当前学生的学号
                 news_ids += chks[i].value ;
                 news_ids  += ","; //学号之间的分隔符
@@ -68,15 +68,9 @@
         }else{
             if(confirm("确定删除么?")){
                 //调用后台,执行删除操作
-                window.location.href = "DelStuServlet?news_ids=" + news_ids;
+                window.location.href = "deleteNews?news_ids=" + news_ids;
             }
-
-
         }
-
-
-
-
     }
 
     function checkAll() {
@@ -100,19 +94,18 @@
     function unchk(chk_s){
         //获取全选框
         var chkall = document.getElementById("chkAll");
-        if(chk_s.checked == false){//当前复选框没有选中,那么全选框也不被选中
+        if(!chk_s.checked){//当前复选框没有选中,那么全选框也不被选中
             chkall.checked = false;
         }else{//
             var chks = document.getElementsByName("chk");
             var isAll = true;//标记目前是否全选
 
             for(var i=0; i<chks.length; i++){
-                if(chks[i].checked == false){
+                if(!chks[i].checked){
                     isAll = false;
                     break;
                 }
             }
-
             chkall.checked = isAll;
 
         }
@@ -120,10 +113,10 @@
 </script>
 <body>
 <div align="center">
-    <h2>欢迎${name}使用新闻管理系统</h2>
-    <input type="button" value="新增" onclick=" addnews()">
-    <input type="button" value="编辑" onclick="editnews()">
-    <input type="button" value="删除" onclick="delnews()">
+    <h2>欢迎${userMessage}使用新闻管理系统</h2>
+    <input type="button" value="新增" onclick=" addNews()">
+    <input type="button" value="编辑" onclick="editNews()">
+    <input type="button" value="删除" onclick="delNews()">
 </div>
 <div align="center">
     <table>
@@ -135,13 +128,12 @@
             <td>上传时间</td>
             <td>更新时间</td>
         </tr>
-
         <c:forEach items="${newsList}" var="news">
             <tr>
-                <td align="center"><input type="checkbox" value="${news.news_id}" name="chk" onclick="unchk(this)"></td>
-                <td align="center">${news.news_title}</td>
-                <td align="center">${news.news_post_date}</td>
-                <td align="right">${news.news_update_date}</td>
+                <td align="center"><input type="checkbox" value="${news.newsId}" name="chk" onclick="unchk(this)"></td>
+                <td align="center">${news.newsTitle}</td>
+                <td align="center">${news.newsPostDate}</td>
+                <td align="right">${news.newsUpdateDate}</td>
             </tr>
         </c:forEach>
     </table>
