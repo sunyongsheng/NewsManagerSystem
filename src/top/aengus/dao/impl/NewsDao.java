@@ -11,7 +11,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.sql.Date;
 import java.util.List;
-import java.util.Locale;
 
 /**
  * @author Aengus Sun
@@ -152,32 +151,28 @@ public class NewsDao implements NewsInterface {
     @Override
     public List<News> getNewsByCategory(String category) {
         List<News> list = new ArrayList<>();
-        try{
-        String sql = "select * from student where category="+category;
-        assert connection != null;
-        preparedStatement = connection.prepareStatement(sql);
-        resultSet = preparedStatement.executeQuery();
-        while (resultSet.next()) {
-            int newsId = resultSet.getInt("news_id");
-            String c_title = resultSet.getString("news_title");
-            String c_content = resultSet.getString("news_content");
-            Date c_postDate = resultSet.getDate("news_post_date");
-            Date c_updateDate = resultSet.getDate("news_update_date");
-            String c_keywords = resultSet.getString("keywords");
-            String c_authorId = resultSet.getString("author_id");
-            int c_viewCount = resultSet.getInt("view_count");
-            list.add(new News(newsId, c_title, c_content, c_postDate, c_updateDate, c_keywords, c_authorId,category,c_viewCount));
+        try {
+            String sql = "SELECT * FROM student WHERE category=" + category;
+            assert connection != null;
+            preparedStatement = connection.prepareStatement(sql);
+            resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                int newsId = resultSet.getInt("news_id");
+                String c_title = resultSet.getString("news_title");
+                String c_content = resultSet.getString("news_content");
+                Date c_postDate = resultSet.getDate("news_post_date");
+                Date c_updateDate = resultSet.getDate("news_update_date");
+                String c_keywords = resultSet.getString("keywords");
+                String c_authorId = resultSet.getString("author_id");
+                int c_viewCount = resultSet.getInt("view_count");
+                list.add(new News(newsId, c_title, c_content, c_postDate, c_updateDate, c_keywords, c_authorId, category, c_viewCount));
+            }
+        } catch (
+                SQLException e) {
+            e.printStackTrace();
+        } finally {
+            DBUtil.close(connection, preparedStatement, resultSet);
         }
-    } catch(
-    SQLException e)
-
-    {
-        e.printStackTrace();
-    } finally
-
-    {
-        DBUtil.close(connection, preparedStatement, resultSet);
-    }
         return list;
     }
 

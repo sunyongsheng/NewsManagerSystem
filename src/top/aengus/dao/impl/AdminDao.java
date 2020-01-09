@@ -2,7 +2,6 @@ package top.aengus.dao.impl;
 
 import top.aengus.dao.interfaces.AdminInterface;
 import top.aengus.pojo.Admin;
-import top.aengus.pojo.Author;
 import top.aengus.utils.DBUtil;
 
 import java.sql.Connection;
@@ -25,15 +24,13 @@ public class AdminDao implements AdminInterface {
     public boolean adminLogin(Admin admin) {
         try {
             connection = DBUtil.getConnection();
-            String sql = "Select * from administrator u where u.admin_id=? and u.admin_password=?";
+            String sql = "SELECT * FROM administrator WHERE admin_id=? AND admin_password=?";
             assert connection != null;
             preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1, admin.getAdminId());
             preparedStatement.setString(2, admin.getAdminPassword());
             resultSet = preparedStatement.executeQuery();
-            if (resultSet.next()) {
-                return true;
-            } else return false;
+            return resultSet.next();
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -46,11 +43,10 @@ public class AdminDao implements AdminInterface {
         boolean flag = false;
         try {
             connection = DBUtil.getConnection();
-            String sql = "Delete from author where author_id =?";
+            String sql = "DELETE FROM author WHERE author_id =?";
             assert connection != null;
             preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1, authorId);
-
             if (preparedStatement.executeUpdate() > 0) {
                 flag = true;
             }
@@ -60,8 +56,6 @@ public class AdminDao implements AdminInterface {
         } finally {
             DBUtil.close(connection, preparedStatement, resultSet);
         }
-
-
         return false;
     }
 
@@ -74,7 +68,6 @@ public class AdminDao implements AdminInterface {
             assert connection != null;
             preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setInt(1, newsId);
-
             if (preparedStatement.executeUpdate() > 0) {
                 flag = true;
             }
