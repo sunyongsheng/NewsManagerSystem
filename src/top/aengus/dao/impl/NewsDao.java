@@ -54,7 +54,7 @@ public class NewsDao implements NewsInterface {
         assert connection != null;
         try {
             if (adminId != null && authorId == null) {
-                String sql = "UPDATE `news` set news_title=?,set news_content=?, set news_update_date=?,set keywords=?,set author_id=?,set news_category=?)";
+                String sql = "UPDATE `news` SET news_title=?,news_content=?,news_update_date=?,keywords=?,author_id=?,news_category=? WHERE news_id=?";
                 preparedStatement = connection.prepareStatement(sql);
                 preparedStatement.setString(1, latestNews.getNewsTitle());
                 preparedStatement.setString(2, latestNews.getNewsContent());
@@ -62,9 +62,10 @@ public class NewsDao implements NewsInterface {
                 preparedStatement.setString(4, latestNews.getKeywords());
                 preparedStatement.setString(5, latestNews.getAuthorId());
                 preparedStatement.setString(6, latestNews.getNewsCategory());
+                preparedStatement.setInt(7, latestNews.getNewsId());
                 return preparedStatement.executeUpdate();
             } else if (adminId == null && authorId != null) {
-                String sql = "UPDATE `news` set news_title=?,set news_content=?, set news_update_date=?,set keywords=?,set author_id=?,set news_category=?) WHERE author_id=" + authorId;
+                String sql = "UPDATE `news` SET news_title=?,news_content=?,news_update_date=?,keywords=?,author_id=?,news_category=? WHERE news_id=? AND author_id=" + authorId;
                 preparedStatement = connection.prepareStatement(sql);
                 preparedStatement.setString(1, latestNews.getNewsTitle());
                 preparedStatement.setString(2, latestNews.getNewsContent());
@@ -72,6 +73,7 @@ public class NewsDao implements NewsInterface {
                 preparedStatement.setString(4, latestNews.getKeywords());
                 preparedStatement.setString(5, latestNews.getAuthorId());
                 preparedStatement.setString(6, latestNews.getNewsCategory());
+                preparedStatement.setInt(7, latestNews.getNewsId());
                 try {
                     res = preparedStatement.executeUpdate();
                 } catch (SQLException e) {
