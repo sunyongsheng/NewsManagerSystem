@@ -30,7 +30,8 @@ public class AddAuthorServlet extends HttpServlet {
         } else {
             request.setAttribute("addAuthorMessage", "添加作者失败");
         }
-        if (request.getSession().getAttribute("user").toString().equals("admin")) {
+        if ((request.getSession().getAttribute("user") == null)
+                || (request.getSession().getAttribute("user").toString().equals("admin"))) {
             request.getRequestDispatcher("getAllNews").forward(request, response);
         } else {
             request.getRequestDispatcher("login.jsp").forward(request, response);
