@@ -8,6 +8,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>
+<head>
+    <title>新闻编辑</title>
+</head>
 <body>
 <form action="save" method="post">
     <table width="500" border="0" align="center">

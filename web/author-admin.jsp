@@ -52,7 +52,7 @@
         window.location.href = "getAllNews?quit=true";
     }
     function addNews() {
-        location.href="add.jsp";
+        location.href="add-news.jsp";
     }
 
     function editNews(){
