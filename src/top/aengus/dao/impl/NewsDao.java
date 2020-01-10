@@ -232,6 +232,33 @@ public class NewsDao implements NewsInterface {
         return list;
     }
 
+    @Override
+    public News getNewsByNewsId(int newsId) {
+        connection = DBUtil.getConnection();
+        String sql = "SELECT * FROM news WHERE news_id=?";
+        try {
+            assert connection != null;
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, newsId);
+            resultSet = preparedStatement.executeQuery();
+            resultSet.next();
+            String newsTitle1 = resultSet.getString("news_title");
+            String newsContent = resultSet.getString("news_content");
+            Date newsPostDate = resultSet.getDate("news_post_date");
+            Date newsUpdateDate = resultSet.getDate("news_update_date");
+            String newsCategory = resultSet.getString("news_category");
+            String keywords = resultSet.getString("keywords");
+            String authorId = resultSet.getString("author_id");
+            int viewCount = resultSet.getInt("view_count");
+            return new News(newsId, newsTitle1, newsContent, newsPostDate, newsUpdateDate, newsCategory, keywords, authorId, viewCount);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            DBUtil.close(connection, preparedStatement, resultSet);
+        }
+        return null;
+    }
+
     public static void main(String[] args) {
         List<News> temp = new NewsDao().getAllNews();
         System.out.println(temp.get(0));
