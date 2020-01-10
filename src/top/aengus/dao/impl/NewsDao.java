@@ -95,7 +95,7 @@ public class NewsDao implements NewsInterface {
         assert connection != null;
         try {
             if (adminId != null && authorId == null) {
-                String sql = "DELETE*FROM `news` where newsId=?";
+                String sql = "DELETE  FROM `news` where news_id=?";
                 preparedStatement = connection.prepareStatement(sql);
                 preparedStatement.setInt(1, newsId);
                 return preparedStatement.executeUpdate();
@@ -176,8 +176,9 @@ public class NewsDao implements NewsInterface {
     @Override
     public List<News> getNewsByCategory(String category) {
         List<News> list = new ArrayList<>();
+        connection = DBUtil.getConnection();
         try {
-            String sql = "SELECT * FROM student WHERE category=?;";
+            String sql = "SELECT * FROM news WHERE news_category=?;";
             assert connection != null;
             preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1, category);
@@ -205,7 +206,7 @@ public class NewsDao implements NewsInterface {
     public List<News> getNewsByNewsTitle(String newsTitle) {
         List<News> list = new ArrayList<>();
         try {
-            String sql = "SELECT * FROM student WHERE category LIKE ?;";
+            String sql = "SELECT * FROM news WHERE news_title LIKE ?;";
             assert connection != null;
             preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1, "%"+newsTitle+"%");
