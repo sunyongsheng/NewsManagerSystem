@@ -1,7 +1,9 @@
 package top.aengus.service;
 
+import top.aengus.dao.impl.AuthorDao;
 import top.aengus.dao.impl.NewsDao;
 import top.aengus.dao.interfaces.NewsInterface;
+import top.aengus.pojo.Author;
 import top.aengus.pojo.News;
 
 import javax.servlet.ServletException;
@@ -39,7 +41,9 @@ public class GetAllNewsServlet extends HttpServlet {
         } else if (request.getSession().getAttribute("user").toString().equals("admin")) {
             // 管理员页面
             List<News> newsList = newsInterface.getAllNews();
+            List<Author> authorList = new AuthorDao().getAllAuthor();
             request.setAttribute("newsList", newsList);
+            request.setAttribute("authorList", authorList);
             request.getRequestDispatcher("admin.jsp").forward(request, response);
         } else if (request.getSession().getAttribute("user").toString().equals("author")) {
             // 作者页面
