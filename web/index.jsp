@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
-
+<link rel="stylesheet" href="css/bootstrap.css">
 <script>
   function login() {
       location.href = "login.jsp";
@@ -156,16 +156,24 @@
   </form>
 <form>
     <div align="center">
-        <table border="1">
-            <c:forEach items="${newsList}" var="news">
+        <div class="col-md-6">
+            <table class="table table-striped">
                 <tr>
-                    <td>${news.newsCategory}</td>
-                    <td>${news.newsTitle}</td>
-                    <td>${news.newsPostDate}</td>
-                    <td>${news.viewCount}</td>
+                    <td>分类</td>
+                    <td>标题</td>
+                    <td>发布时间</td>
+                    <td>浏览量</td>
                 </tr>
-            </c:forEach>
-        </table>
+                <c:forEach items="${newsList}" var="news">
+                    <tr>
+                        <td>${news.newsCategory}</td>
+                        <td><a href="viewNews?news_id=${news.newsId}">${news.newsTitle}<a></a></td>
+                        <td>${news.newsPostDate}</td>
+                        <td>${news.viewCount}</td>
+                    </tr>
+                </c:forEach>
+            </table>
+        </div>
     </div>
 
 </form>

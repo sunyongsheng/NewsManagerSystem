@@ -11,6 +11,6 @@
     <title>新闻详情</title>
 </head>
 <body>
-
+${news.newsContent}
 </body>
 </html>
