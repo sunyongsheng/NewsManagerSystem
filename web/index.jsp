@@ -7,12 +7,14 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
+
 <script>
   function login() {
       location.href = "admin.jsp";
   }
 </script>
   <head>
+      <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css">
     <title>新闻首页</title>
       <style>
           #menu {
@@ -52,6 +54,59 @@
           #menu li a:hover:before {
               right: 0;
           }
+
+          body {
+              margin: 0;
+              padding: 0;
+              background: #DCDCDC;
+          }
+
+          .search-box {
+              position: absolute;
+              top: 19.5%;
+              left: 80%;
+              transform: translate(-50, -50);
+              background: #2f3640;
+              height: 15px;
+              border-radius: 10px;
+              padding: 10px;
+
+          }
+
+          .search-box:hover > .search-txt {
+              width: 170px;
+              padding: 0 25px;
+          }
+
+          .search-box:hover > .search-btn {
+              background: white;
+          }
+
+          .search-btn {
+              color: #e84118;
+              float: left;
+              width: 35px;
+              height: 35px;
+              border-radius: 50%;
+              background: #2f3640;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              transition: 0.4s;
+          }
+
+          .search-txt {
+              border: none;
+              background: none;
+              outline: none;
+              float: left;
+              padding: 0;
+              color: white;
+              font-size: 16px;
+              transition: 0.4s;
+              line-height: 20px;
+              width: 0px;
+          }
       </style>
   </head>
 
@@ -65,6 +120,7 @@
   <div class="search-box">
       <input class="search-txt" type="text" name="" placeholder="Type to search">
       <a class="search-btn" href="#">
+          <i class="fa fa-search" aria-hidden="true"></i>
 
       </a>
 
