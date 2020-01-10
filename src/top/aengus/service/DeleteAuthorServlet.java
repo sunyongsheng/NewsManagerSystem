@@ -22,9 +22,9 @@ public class DeleteAuthorServlet extends HttpServlet {
         String authorId = request.getParameter("author_id");
         AdminInterface adminInterface = new AdminDao();
         if (adminInterface.deleteAuthorByAuthorId(authorId)) {
-            request.setAttribute("deleteMessage", "删除成功");
+            request.setAttribute("deleteAuthorMessage", "删除成功");
         } else {
-            request.setAttribute("deleteMessage", "删除失败");
+            request.setAttribute("deleteAuthorMessage", "删除失败");
         }
         request.getRequestDispatcher("getAllNews").forward(request, response);
 
