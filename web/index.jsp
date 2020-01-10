@@ -129,6 +129,9 @@
           <ul id="menu">
               <ul>
                   <li>
+                      <a href="#">全部</a>
+                  </li>
+                  <li>
                       <a href="getNewsByCategory?category=体育">体育</a>
                   </li>
                   <li>
