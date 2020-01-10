@@ -29,7 +29,7 @@ public class NewsDao implements NewsInterface {
         if (!authorId.equals(news.getAuthorId())) return false;
         try {
             connection = DBUtil.getConnection();
-            String sql = "INSERT INTO `news`(news_title, news_content, news_post_date, keywords, author_id, news_category) VALUES (?,?,?,?,?,?,?)";
+            String sql = "INSERT INTO `news`(news_title, news_content, news_post_date, keywords, author_id, news_category) VALUES (?,?,?,?,?,?)";
             assert connection != null;
             preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1, news.getNewsTitle());

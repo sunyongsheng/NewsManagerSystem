@@ -27,7 +27,7 @@ public class AddNewsServlet extends HttpServlet {
         Date newsPostDate = Date.valueOf(request.getParameter("news_post_date"));
         String keywords = request.getParameter("keywords");
         String authorId = request.getSession().getAttribute("userMessage").toString();
-        String category = request.getParameter("category");
+        String category = request.getParameter("news_category");
         News news = new News(newsTitle, newsContent, newsPostDate, keywords, authorId, category);
         NewsInterface newsInterface = new NewsDao();
         if (newsInterface.addNews(authorId, news)) {
