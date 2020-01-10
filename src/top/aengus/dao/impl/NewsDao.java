@@ -65,16 +65,15 @@ public class NewsDao implements NewsInterface {
                 preparedStatement.setInt(7, latestNews.getNewsId());
                 return preparedStatement.executeUpdate();
             } else if (adminId == null && authorId != null) {
-                String sql = "UPDATE `news` SET news_title=?,news_content=?,news_update_date=?,keywords=?,author_id=?,news_category=? WHERE news_id=? AND author_id=?;";
+                String sql = "UPDATE `news` SET news_title=?,news_content=?,news_update_date=?,keywords=?,news_category=? WHERE news_id=? AND author_id=?;";
                 preparedStatement = connection.prepareStatement(sql);
                 preparedStatement.setString(1, latestNews.getNewsTitle());
                 preparedStatement.setString(2, latestNews.getNewsContent());
                 preparedStatement.setDate(3, latestNews.getNewsUpdateDate());
                 preparedStatement.setString(4, latestNews.getKeywords());
-                preparedStatement.setString(5, latestNews.getAuthorId());
-                preparedStatement.setString(6, latestNews.getNewsCategory());
-                preparedStatement.setInt(7, latestNews.getNewsId());
-                preparedStatement.setString(8, authorId);
+                preparedStatement.setString(5, latestNews.getNewsCategory());
+                preparedStatement.setInt(6, latestNews.getNewsId());
+                preparedStatement.setString(7, authorId);
                 try {
                     res = preparedStatement.executeUpdate();
                 } catch (SQLException e) {
@@ -101,9 +100,10 @@ public class NewsDao implements NewsInterface {
                 preparedStatement.setInt(1, newsId);
                 return preparedStatement.executeUpdate();
             } else if (adminId == null && authorId != null) {
-                String sql = "UPDATE `news` set news_title=?,set news_content=?, set news_update_date=?,set keywords=?,set author_id=?,set news_category=?)WHERE author_id=" + authorId;
+                String sql = "DELETE FROM news WHERE news_id=? AND author_id=?";
                 preparedStatement = connection.prepareStatement(sql);
                 preparedStatement.setInt(1, newsId);
+                preparedStatement.setString(2, authorId);
                 try {
                     res = preparedStatement.executeUpdate();
                 } catch (SQLException e) {
@@ -258,7 +258,7 @@ public class NewsDao implements NewsInterface {
                 preparedStatement.setInt(2, newsId);
                 preparedStatement.executeUpdate();
             }
-            return new News(newsId, newsTitle1, newsContent, newsPostDate, newsUpdateDate, newsCategory, keywords, authorId, viewCount+1);
+            return new News(newsId, newsTitle1, newsContent, newsPostDate, newsUpdateDate, keywords, authorId, newsCategory, viewCount+1);
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
