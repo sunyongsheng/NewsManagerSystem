@@ -25,6 +25,8 @@
 </div>
 <div align="center">
     <a style="color:red">${addNewsMessage}</a>
+    <a style="color:red">${editMessage}</a>
+
     <table>
         <tr>
             <td align="center">
@@ -52,6 +54,7 @@
     }
     function addNews() {
         location.href="add.jsp";
+
     }
 
     function editNews(){
