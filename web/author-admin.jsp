@@ -11,6 +11,39 @@
 <head>
     <title>读者界面</title>
 </head>
+<body>
+<form align="right">
+    <td>
+        <input type="button" value="退出" onclick="back()">
+    </td>
+</form>
+<div align="center">
+    <h2>欢迎${userMessage}使用新闻管理系统</h2>
+    <input type="button" value="新增" onclick="addNews()">
+    <input type="button" value="编辑" onclick="editNews()">
+    <input type="button" value="删除" onclick="delNews()">
+</div>
+<div align="center">
+    <table>
+        <tr>
+            <td align="center">
+                <input type="checkbox" onclick="" id="chkAll">
+            </td>
+            <td>新闻标题</td>
+            <td>上传时间</td>
+            <td>更新时间</td>
+        </tr>
+        <c:forEach items="${newsList}" var="news">
+            <tr>
+                <td align="center"><input type="checkbox" value="${news.newsId}" name="chk" onclick="unCheck(this)"></td>
+                <td align="center">${news.newsTitle}</td>
+                <td align="center">${news.newsPostDate}</td>
+                <td align="right">${news.newsUpdateDate}</td>
+            </tr>
+        </c:forEach>
+    </table>
+</div>
+</body>
 <script>
     function back() {
         location.href = "index.jsp";
@@ -65,7 +98,7 @@
         }else{
             if(confirm("确定删除么?")){
                 //调用后台,执行删除操作
-                window.location.href = "devareNews?news_ids=" + news_ids + "&&author_id=" + ${userMessage};
+                window.location.href = "deleteNews?news_ids=" + news_ids + "&&author_id=" + ${userMessage};
             }
         }
     }
@@ -107,37 +140,4 @@
         }
     }
 </script>
-<body>
-<form align="right">
-    <td>
-        <input type="button" value="退出" onclick="back()">
-    </td>
-</form>
-<div align="center">
-    <h2>欢迎${userMessage}使用新闻管理系统</h2>
-    <input type="button" value="新增" onclick=" addNews()">
-    <input type="button" value="编辑" onclick="editNews()">
-    <input type="button" value="删除" onclick="delNews()">
-</div>
-<div align="center">
-    <table>
-        <tr>
-            <td align="center">
-                <input type="checkbox" onclick="" id="chkAll">
-            </td>
-            <td>新闻标题</td>
-            <td>上传时间</td>
-            <td>更新时间</td>
-        </tr>
-        <c:forEach items="${newsList}" var="news">
-            <tr>
-                <td align="center"><input type="checkbox" value="${news.newsId}" name="chk" onclick="unCheck(this)"></td>
-                <td align="center">${news.newsTitle}</td>
-                <td align="center">${news.newsPostDate}</td>
-                <td align="right">${news.newsUpdateDate}</td>
-            </tr>
-        </c:forEach>
-    </table>
-</div>
-</body>
 </html>
