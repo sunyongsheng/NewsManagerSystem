@@ -96,6 +96,7 @@
                 <input class="txtb" type="text" name="username" placeholder="用户名">
                 <input class="txtb" type="password" name="password" placeholder="密码">
                 <input class="login-btn" type="submit" value="登录">
+                <p class="message" style="color: black">没有账户？<a href="add-author.jsp">注册</a></p>
                 <a style="color: red;">${loginMessage}</a>
             </form>
         </div>
