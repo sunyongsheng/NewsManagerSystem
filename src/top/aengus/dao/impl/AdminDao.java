@@ -2,6 +2,7 @@ package top.aengus.dao.impl;
 
 import top.aengus.dao.interfaces.AdminInterface;
 import top.aengus.pojo.Admin;
+import top.aengus.pojo.Author;
 import top.aengus.utils.DBUtil;
 
 import java.sql.Connection;
@@ -62,6 +63,25 @@ public class AdminDao implements AdminInterface {
     }
 
     @Override
+    public boolean addAuthor(Author author) {
+        try {
+            connection = DBUtil.getConnection();
+            String sql = "INSERT INTO author(author_id,author_password,author_name)VALUES (?,?,?)";
+            assert connection != null;
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, author.getAuthorId());
+            preparedStatement.setString(2, author.getAuthorPassword());
+            preparedStatement.setString(3, author.getAuthorName());
+            return preparedStatement.executeUpdate() == 1;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            DBUtil.close(connection, preparedStatement, resultSet);
+        }
+        return false;
+    }
+    @Override
     public boolean deleteNewsByNewsId(int newsId) {
         boolean flag = false;
         try {
@@ -86,7 +106,7 @@ public class AdminDao implements AdminInterface {
 
     public static void main(String[] args) {
         AdminDao adminDao = new AdminDao();
-        Admin admin = new Admin("admin", "1234");
-        System.out.println(adminDao.deleteNewsByNewsId(1));
+        Author author = new Author("Author", "123", "qwere");
+        System.out.println(adminDao.addAuthor(author));
     }
 }
