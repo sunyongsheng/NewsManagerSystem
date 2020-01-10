@@ -6,11 +6,12 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 
 <script>
   function login() {
-      location.href = "admin.jsp";
+      location.href = "login.jsp";
   }
 </script>
   <head>
@@ -33,7 +34,7 @@
               color: #313131;
               font-size: 20px;
               font-weight: 700;
-              font-family sans-serif;
+              font-family: sans-serif;
               display: block;
               overflow: hidden;
               transition: 0.7s all;
@@ -116,41 +117,54 @@
       <input type="button" value="登录" onclick="login()">
     </td>
   </form >
-  <h1 align="center">网站名</h1>
+  <h1 align="center">新闻管理系统</h1>
   <div class="search-box">
-      <input class="search-txt" type="text" name="" placeholder="Type to search">
+      <input class="search-txt" type="text" name="search_title" placeholder="输入搜索内容">
       <a class="search-btn" href="#">
           <i class="fa fa-search" aria-hidden="true"></i>
-
       </a>
-
   </div>
   <form>
       <div style="margin: 0;padding: 0;background-color: #f1f1f1;" align="center">
           <ul id="menu">
               <ul>
                   <li>
-                      <a href="#">体育</a>
+                      <a href="getNewsByCategory?category=体育">体育</a>
                   </li>
                   <li>
-                      <a href="#">财经</a>
+                      <a href="getNewsByCategory?category=财经">财经</a>
                   </li>
                   <li>
-                      <a href="#">时政</a>
+                      <a href="getNewsByCategory?category=时政">时政</a>
                   </li>
                   <li>
-                      <a href="#">教育</a>
+                      <a href="getNewsByCategory?category=教育">教育</a>
                   </li>
                   <li>
-                      <a href="#">文化</a>
+                      <a href="getNewsByCategory?category=文化">文化</a>
                   </li>
                   <li>
-                      <a href="#">科技</a>
+                      <a href="getNewsByCategory?category=科技">科技</a>
                   </li>
               </ul>
           </ul>
 
       </div>
   </form>
+<form>
+    <div align="center">
+        <table border="1">
+            <c:forEach items="${newsList}" var="news">
+                <tr>
+                    <td>${news.newsCategory}</td>
+                    <td>${news.newsTitle}</td>
+                    <td>${news.newsPostDate}</td>
+                    <td>${news.viewCount}</td>
+                </tr>
+            </c:forEach>
+        </table>
+    </div>
+
+</form>
   </body>
 </html>
