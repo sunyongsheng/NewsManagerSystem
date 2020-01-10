@@ -14,6 +14,45 @@
 </script>
   <head>
     <title>新闻首页</title>
+      <style>
+          #menu {
+              margin: 0;
+              padding: 0;
+          }
+
+          #menu li {
+              list-style: none;
+              display: inline-block;
+          }
+
+          #menu li a {
+              text-decoration: none;
+              position: relative;
+              color: #313131;
+              font-size: 20px;
+              font-weight: 700;
+              font-family sans-serif;
+              display: block;
+              overflow: hidden;
+              transition: 0.7s all;
+              padding: 14px 20px;
+          "
+          }
+
+          #menu li a:before {
+              content: '';
+              width: 30px;
+              position: absolute;
+              border-bottom: 6px solid #313131;
+              bottom: 0px;
+              right: 200px;
+              transition: 0.7s all;
+          }
+
+          #menu li a:hover:before {
+              right: 0;
+          }
+      </style>
   </head>
 
 <body>
@@ -23,27 +62,34 @@
     </td>
   </form >
   <h1 align="center">网站名</h1>
+  <div class="search-box">
+      <input class="search-txt" type="text" name="" placeholder="Type to search">
+      <a class="search-btn" href="#">
+
+      </a>
+
+  </div>
   <form>
-      <div style="margin: 0;padding: 0;background-color: #f1f1f1;">
-          <ul id="menu" style="margin: 0;padding: 0;">
+      <div style="margin: 0;padding: 0;background-color: #f1f1f1;" align="center">
+          <ul id="menu">
               <ul>
-                  <li><a href="#"
-                         style="text-decoration: none;position: relative;color: #313131;font-size: 50px;font-weight: 700;font-family sans-serif; display: block; overflow: hidden;transition: 0.7s all;padding: 14px 20px;">体育</a>
+                  <li>
+                      <a href="#">体育</a>
                   </li>
-                  <li><a href="#"
-                         style="text-decoration: none;position: relative;color: #313131;font-size: 50px;font-weight: 700;font-family sans-serif; display: block; overflow: hidden;transition: 0.7s all;padding: 14px 20px;">财经</a>
+                  <li>
+                      <a href="#">财经</a>
                   </li>
-                  <li><a href="#"
-                         style="text-decoration: none;position: relative;color: #313131;font-size: 50px;font-weight: 700;font-family sans-serif; display: block; overflow: hidden;transition: 0.7s all;padding: 14px 20px;">时政</a>
+                  <li>
+                      <a href="#">时政</a>
                   </li>
-                  <li><a href="#"
-                         style="text-decoration: none;position: relative;color: #313131;font-size: 50px;font-weight: 700;font-family sans-serif; display: block; overflow: hidden;transition: 0.7s all;padding: 14px 20px;"
-                         v>教育</a></li>
-                  <li><a href="#"
-                         style="text-decoration: none;position: relative;color: #313131;font-size: 50px;font-weight: 700;font-family sans-serif; display: block; overflow: hidden;transition: 0.7s all;padding: 14px 20px;">文化</a>
+                  <li>
+                      <a href="#">教育</a>
                   </li>
-                  <li><a href="#"
-                         style="text-decoration: none;position: relative;color: #313131;font-size: 50px;font-weight: 700;font-family sans-serif; display: block; overflow: hidden;transition: 0.7s all;padding: 14px 20px;">科技</a>
+                  <li>
+                      <a href="#">文化</a>
+                  </li>
+                  <li>
+                      <a href="#">科技</a>
                   </li>
               </ul>
           </ul>
