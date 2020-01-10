@@ -2,6 +2,8 @@ package top.aengus.dao.interfaces;
 
 import top.aengus.pojo.Author;
 
+import java.util.List;
+
 /**
  * @author Aengus Sun
  * Email: sys6511@126.com | sunyongsheng6511@gmail.com
@@ -11,4 +13,5 @@ import top.aengus.pojo.Author;
 public interface AuthorInterface {
     boolean authorLogin(Author author);
     boolean authorIdAvailable(String authorId);
+    List<Author> getAllAuthor();
 }

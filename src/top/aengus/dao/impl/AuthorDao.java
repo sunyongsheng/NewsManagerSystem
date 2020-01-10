@@ -8,6 +8,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class AuthorDao implements AuthorInterface {
     Connection connection;
@@ -55,5 +57,27 @@ public class AuthorDao implements AuthorInterface {
             DBUtil.close(connection, preparedStatement, resultSet);
         }
         return false;
+    }
+
+    @Override
+    public List<Author> getAllAuthor() {
+        List<Author> res = new ArrayList<>();
+        try {
+            connection = DBUtil.getConnection();
+            String sql = "SELECT * FROM author";
+            assert connection != null;
+            preparedStatement = connection.prepareStatement(sql);
+            resultSet = preparedStatement.getResultSet();
+            while (resultSet.next()) {
+                res.add(new Author(resultSet.getString("author_id"),
+                        resultSet.getString("author_password"),
+                        resultSet.getString("author_name")));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            DBUtil.close(connection, preparedStatement, resultSet);
+        }
+        return res;
     }
 }
