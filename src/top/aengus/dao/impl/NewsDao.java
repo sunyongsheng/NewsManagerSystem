@@ -257,7 +257,7 @@ public class NewsDao implements NewsInterface {
                 preparedStatement.setInt(2, newsId);
                 preparedStatement.executeUpdate();
             }
-            return new News(newsId, newsTitle1, newsContent, newsPostDate, newsUpdateDate, newsCategory, keywords, authorId, viewCount);
+            return new News(newsId, newsTitle1, newsContent, newsPostDate, newsUpdateDate, newsCategory, keywords, authorId, viewCount+1);
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
