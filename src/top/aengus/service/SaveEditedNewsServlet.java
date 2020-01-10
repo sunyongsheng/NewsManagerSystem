@@ -28,7 +28,7 @@ public class SaveEditedNewsServlet extends HttpServlet {
         Date newsUpdateDate = Date.valueOf(request.getParameter("news_update_date"));
         String keywords = request.getParameter("keywords");
         String userId = request.getSession().getAttribute("userMessage").toString();
-        String category = request.getParameter("category");
+        String category = request.getParameter("news_category");
         News news = new News(newsId, newsTitle, newsContent, newsUpdateDate, keywords, userId, category);
         NewsInterface newsInterface = new NewsDao();
         int res = 0;
