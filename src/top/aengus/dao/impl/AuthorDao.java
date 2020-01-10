@@ -67,7 +67,7 @@ public class AuthorDao implements AuthorInterface {
             String sql = "SELECT * FROM author";
             assert connection != null;
             preparedStatement = connection.prepareStatement(sql);
-            resultSet = preparedStatement.getResultSet();
+            resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 res.add(new Author(resultSet.getString("author_id"),
                         resultSet.getString("author_password"),
