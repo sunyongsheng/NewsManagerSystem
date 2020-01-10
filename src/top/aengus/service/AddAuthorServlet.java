@@ -1,5 +1,9 @@
 package top.aengus.service;
 
+import top.aengus.dao.impl.AdminDao;
+import top.aengus.dao.interfaces.AdminInterface;
+import top.aengus.pojo.Author;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -16,10 +20,20 @@ import java.io.IOException;
 @WebServlet("/addAuthor")
 public class AddAuthorServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        String authorId = request.getParameter("author_id");
+        String authorPassword = request.getParameter("author_password");
+        String authorName = request.getParameter("author_name");
+        Author author = new Author(authorId, authorPassword, authorName);
+        AdminInterface adminInterface = new AdminDao();
+        if (adminInterface.addAuthor(author)) {
+            request.setAttribute("addAuthorMessage", "添加作者成功");
+        } else {
+            request.setAttribute("addAuthorMessage", "添加作者失败");
+        }
+        request.getRequestDispatcher("getAllNews").forward(request, response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        doPost(request, response);
     }
 }
