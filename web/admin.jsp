@@ -100,12 +100,31 @@
         } else if (count > 1){
             alert("只能选择一条数据进行编辑");
         } else {
-            var news_id = chks[index].value;
-            window.location.href = "editAuthor?news_id=" + news_id;
+            var authorId = chks[index].value;
+            window.location.href = "editAuthor?author_id=" + authorId;
         }
 
     }
-
+    function delNews(){
+        //获取所有复选框,查看是否选择了记录
+        var chks = document.getElementsByName("chk");
+        var news_ids = ""; //用来存储要删除的学生学号
+        for (var i = 0; i < chks.length; i++) {
+            if(chks[i].checked){
+                //当前复选框被选中,获取当前学生的学号
+                news_ids += chks[i].value ;
+                news_ids  += ","; //学号之间的分隔符
+            }
+        }
+        if(news_ids === ""){
+            alert("请选择要删除的新闻");
+        }else{
+            if(confirm("确定删除么?")){
+                //调用后台,执行删除操作
+                window.location.href = "deleteNews?news_ids=" + news_ids + "&admin_id=${userMessage}";
+            }
+        }
+    }
     function delAuthor(){
         var chks = document.getElementsByName("chk2");
         var authorIds = "";
