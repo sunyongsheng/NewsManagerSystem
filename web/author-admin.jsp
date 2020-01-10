@@ -30,7 +30,7 @@
     <table>
         <tr>
             <td align="center">
-                <input type="checkbox" onclick="" id="chkAll">
+                <input type="checkbox" onclick="checkAll()" id="chkAll">
             </td>
             <td>新闻标题</td>
             <td>上传时间</td>
@@ -49,12 +49,10 @@
 </body>
 <script>
     function back() {
-        location.href = "index.jsp";
-
+        window.location.href = "getAllNews?quit=true";
     }
     function addNews() {
         location.href="add.jsp";
-
     }
 
     function editNews(){
@@ -74,14 +72,8 @@
         } else if (count > 1){
             alert("只能选择一条数据进行编辑");
         } else {
-            //进行编辑操作
-            //获取要编辑新闻的信息
             var news_id = chks[index].value;
-            alert(news_id);
-            //进入编辑页面,将当前新闻的信息显示在编辑页面中
-            //我们从数据库中获取新闻信息,首先要调用后台获取数据
-            //然后再把数据返回到前台,进行显示
-            window.location.href = "edit?news_id="+news_id + "&&author_id=" + ${userMessage};
+            window.location.href = "edit?news_id=" + news_id;
         }
 
     }
@@ -102,7 +94,7 @@
         }else{
             if(confirm("确定删除么?")){
                 //调用后台,执行删除操作
-                window.location.href = "deleteNews?news_ids=" + news_ids + "&&author_id=" + ${userMessage};
+                window.location.href = "deleteNews?news_ids=" + news_ids + "&author_id=${userMessage}";
             }
         }
     }
