@@ -9,7 +9,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <title>读者界面</title>
+    <title>作者界面</title>
 </head>
 <body>
 <form align="right">
