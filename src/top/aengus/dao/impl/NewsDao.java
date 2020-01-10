@@ -205,6 +205,7 @@ public class NewsDao implements NewsInterface {
     @Override
     public List<News> getNewsByNewsTitle(String newsTitle) {
         List<News> list = new ArrayList<>();
+        connection = DBUtil.getConnection();
         try {
             String sql = "SELECT * FROM news WHERE news_title LIKE ?;";
             assert connection != null;

@@ -119,8 +119,8 @@
   </form >
   <h1 align="center">新闻管理系统</h1>
   <div class="search-box">
-      <input class="search-txt" type="text" name="search_title" placeholder="输入搜索内容">
-      <a class="search-btn" href="#">
+      <input class="search-txt" type="text" id="search_title" placeholder="输入搜索内容" onchange="getInputValue()">
+      <a class="search-btn" href="" id="press_to_search">
           <i class="fa fa-search" aria-hidden="true"></i>
       </a>
   </div>
@@ -169,5 +169,12 @@
     </div>
 
 </form>
-  </body>
+</body>
+<script>
+    function getInputValue() {
+        var inputValue = document.getElementById("search_title").value;
+        var searchPress = document.getElementById("press_to_search");
+        searchPress.href = "searchNewsByTitle?search_title=" + inputValue;
+    }
+</script>
 </html>
