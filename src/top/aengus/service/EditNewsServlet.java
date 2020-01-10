@@ -24,13 +24,11 @@ public class EditNewsServlet extends HttpServlet {
         int newsId = Integer.parseInt(request.getParameter("news_id"));
         NewsInterface newsInterface = new NewsDao();
         News news = newsInterface.getNewsByNewsId(newsId, false);
-        System.out.println("POST");
         request.setAttribute("news", news);
         request.getRequestDispatcher("edit.jsp").forward(request, response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        System.out.println("GEtGETGET");
         doPost(request, response);
     }
 }
