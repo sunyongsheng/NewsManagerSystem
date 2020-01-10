@@ -233,7 +233,7 @@ public class NewsDao implements NewsInterface {
     }
 
     @Override
-    public News getNewsByNewsId(int newsId) {
+    public News getNewsByNewsId(int newsId, boolean addView) {
         connection = DBUtil.getConnection();
         String sql = "SELECT * FROM news WHERE news_id=?";
         try {
@@ -250,6 +250,13 @@ public class NewsDao implements NewsInterface {
             String keywords = resultSet.getString("keywords");
             String authorId = resultSet.getString("author_id");
             int viewCount = resultSet.getInt("view_count");
+            if (addView) {
+                String addSql = "UPDATE news SET view_count=? WHERE news_id=?";
+                preparedStatement = connection.prepareStatement(addSql);
+                preparedStatement.setInt(1, viewCount+1);
+                preparedStatement.setInt(2, newsId);
+                preparedStatement.executeUpdate();
+            }
             return new News(newsId, newsTitle1, newsContent, newsPostDate, newsUpdateDate, newsCategory, keywords, authorId, viewCount);
         } catch (SQLException e) {
             e.printStackTrace();

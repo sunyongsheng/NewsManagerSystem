@@ -23,7 +23,7 @@ public class ViewNewsServlet extends HttpServlet {
         request.setCharacterEncoding("utf-8");
         int newsId = Integer.parseInt(request.getParameter("news_id"));
         NewsInterface newsInterface = new NewsDao();
-        News news = newsInterface.getNewsByNewsId(newsId);
+        News news = newsInterface.getNewsByNewsId(newsId, true);
         request.setAttribute("news", news);
         request.getRequestDispatcher("view-news.jsp").forward(request, response);
     }
