@@ -14,4 +14,5 @@ public interface AuthorInterface {
     boolean authorLogin(Author author);
     boolean authorIdAvailable(String authorId);
     List<Author> getAllAuthor();
+    boolean authorUpdate(String authorId, Author author);
 }

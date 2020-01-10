@@ -154,29 +154,26 @@
 
       </div>
   </form>
-<form>
-    <div align="center">
-        <div class="col-md-6">
-            <table class="table table-striped">
+<div>
+    <div class="col-md-6" align="center">
+        <table>
+            <tr>
+                <td>分类</td>
+                <td>标题</td>
+                <td>发布时间</td>
+                <td>浏览量</td>
+            </tr>
+            <c:forEach items="${newsList}" var="news">
                 <tr>
-                    <td>分类</td>
-                    <td>标题</td>
-                    <td>发布时间</td>
-                    <td>浏览量</td>
+                    <td>${news.newsCategory}</td>
+                    <td><a href="viewNews?news_id=${news.newsId}">${news.newsTitle}<a></a></td>
+                    <td>${news.newsPostDate}</td>
+                    <td>${news.viewCount}</td>
                 </tr>
-                <c:forEach items="${newsList}" var="news">
-                    <tr>
-                        <td>${news.newsCategory}</td>
-                        <td><a href="viewNews?news_id=${news.newsId}">${news.newsTitle}<a></a></td>
-                        <td>${news.newsPostDate}</td>
-                        <td>${news.viewCount}</td>
-                    </tr>
-                </c:forEach>
+            </c:forEach>
             </table>
         </div>
     </div>
-
-</form>
 </body>
 <script>
     function getInputValue() {

@@ -80,4 +80,26 @@ public class AuthorDao implements AuthorInterface {
         }
         return res;
     }
+
+    @Override
+    public boolean authorUpdate(String authorId, Author author) {
+        if (!authorId.equals(author.getAuthorId())) {
+            return false;
+        }
+        try {
+            connection = DBUtil.getConnection();
+            String sql = "UPDATE author SET author_password=?,author_name=? WHERE author_id=?";
+            assert connection != null;
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, author.getAuthorPassword());
+            preparedStatement.setString(2, author.getAuthorName());
+            preparedStatement.setString(3, author.getAuthorId());
+            return preparedStatement.executeUpdate() > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            DBUtil.close(connection, preparedStatement, resultSet);
+        }
+        return false;
+    }
 }
