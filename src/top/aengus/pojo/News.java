@@ -23,6 +23,28 @@ public class News {
     public News() {
     }
 
+    // 编辑新闻使用
+    public News(int newsId, String newsTitle, String newsContent, Date newsUpdateDate, String keywords, String authorId, String newsCategory) {
+        this.newsId = newsId;
+        this.newsTitle = newsTitle;
+        this.newsContent = newsContent;
+        this.newsUpdateDate = newsUpdateDate;
+        this.keywords = keywords;
+        this.authorId = authorId;
+        this.newsCategory = newsCategory;
+    }
+
+    // 新增新闻使用
+    public News(String newsTitle, String newsContent, Date newsPostDate, String keywords, String authorId, String newsCategory) {
+        this.newsTitle = newsTitle;
+        this.newsContent = newsContent;
+        this.newsPostDate = newsPostDate;
+        this.keywords = keywords;
+        this.authorId = authorId;
+        this.newsCategory = newsCategory;
+    }
+
+    // 全部参数
     public News(int newsId, String newsTitle, String newsContent, Date newsPostDate, Date newsUpdateDate, String keywords, String authorId, String newsCategory, int viewCount) {
         this.newsId = newsId;
         this.newsTitle = newsTitle;

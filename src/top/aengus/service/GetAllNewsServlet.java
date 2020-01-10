@@ -24,17 +24,17 @@ public class GetAllNewsServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("utf-8");
         NewsInterface newsInterface = new NewsDao();
-        if (request.getAttribute("user") == null) {
+        if (request.getSession().getAttribute("user") == null) {
             // 主页
             List<News> newsList = newsInterface.getAllNews();
             request.setAttribute("newsList", newsList);
             request.getRequestDispatcher("index.jsp").forward(request, response);
-        } else if (request.getAttribute("user").equals("admin")) {
+        } else if (request.getSession().getAttribute("user").toString().equals("admin")) {
             // 管理员页面
             List<News> newsList = newsInterface.getAllNews();
             request.setAttribute("newsList", newsList);
             request.getRequestDispatcher("admin.jsp").forward(request, response);
-        } else if (request.getAttribute("user").equals("author")) {
+        } else if (request.getSession().getAttribute("user").toString().equals("author")) {
             // 作者页面
             HttpSession session = request.getSession();
             String authorId = session.getAttribute("userMessage").toString();

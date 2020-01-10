@@ -32,19 +32,21 @@ public class LoginServlet extends HttpServlet {
         Author author = new Author(username, password, null);
         if (adminInterface.adminLogin(admin)) {
             // 管理员登录成功
-            request.setAttribute("user", "admin");
             HttpSession session = request.getSession();
             session.setAttribute("userMessage", username);
+            session.setAttribute("user", "admin");
             request.getRequestDispatcher("getAllNews").forward(request, response);
         } else if (authorInterface.authorLogin(author)) {
             // 作者登录成功
-            request.setAttribute("user", "author");
             HttpSession session = request.getSession();
             session.setAttribute("userMessage", username);
+            session.setAttribute("user", "author");
             request.getRequestDispatcher("getAllNews").forward(request, response);
         } else {
             // 登录失败
-            request.setAttribute("user", null);
+            HttpSession session = request.getSession();
+            session.setAttribute("user", null);
+            session.setAttribute("userMessage", null);
             request.setAttribute("loginMessage", "登陆失败，用户名或密码错误");
             request.getRequestDispatcher("getAllNews").forward(request, response);
         }
