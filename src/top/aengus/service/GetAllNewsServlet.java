@@ -23,6 +23,13 @@ import java.util.List;
 public class GetAllNewsServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("utf-8");
+        if (request.getParameter("quit") != null) {
+            // 如果点击了退出，对session进行清除
+            if (request.getParameter("quit").equals("true")) {
+                request.getSession().setAttribute("user", null);
+                request.getSession().setAttribute("userMessage", null);
+            }
+        }
         NewsInterface newsInterface = new NewsDao();
         if (request.getSession().getAttribute("user") == null) {
             // 主页
