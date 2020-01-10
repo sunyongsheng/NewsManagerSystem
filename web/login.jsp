@@ -34,9 +34,50 @@
 
         .login-form {
             position: absolute;
-            top: 50%;
+            top: 70%;
             left: 50%;
             transform: translate(-50%, -50%);
+            color: slategray;
+            text-align: center;
+        }
+
+        .login-form h1 {
+            font-weight: 400;
+            margin-top: 0;
+        }
+
+        .txtb {
+            display: block;
+            box-sizing: border-box;
+            width: 240px;
+            background: #ffffff28;
+            border: 1px solid white;
+            padding: 10px 20px;
+            color: black;
+            outline: none;
+            margin: 10px 0;
+            border-radius: 6px;
+            text-align: center;
+        }
+
+        .login-btn {
+            width: 240px;
+            background: #2c3e50;
+            border: 0;
+            color: white;
+            padding: 10px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .hide-login-btn {
+            color: black;
+            position: absolute;;
+            top: 40px;
+            right: 40px;
+            cursor: pointer;
+            font-size: 24px;
+            opacity: .7;
         }
     </style>
 </head>
@@ -48,10 +89,13 @@
         <a style="color:red">${loginMessage}</a>
         <div class="login-box">
             <form class="login-form" action="login" method="post">
+                <div class="hide-login-btn"><i class="fa fa-times" aria-hidden="true"></i>
+
+                </div>
                 <h3>欢迎登录 </h3>
                 <input class="txtb" type="text" name="username">
                 <input class="txtb" type="password" name="password">
-                <input type="submit" value="登录">
+                <input class="login-btn" type="submit" value="登录">
             </form>
         </div>
 
