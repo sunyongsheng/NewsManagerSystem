@@ -24,6 +24,7 @@
     <input type="button" value="删除" onclick="delNews()">
 </div>
 <div align="center">
+    <a style="color:red">${addNewsMessage}</a>
     <table>
         <tr>
             <td align="center">
@@ -77,7 +78,7 @@
             //进入编辑页面,将当前新闻的信息显示在编辑页面中
             //我们从数据库中获取新闻信息,首先要调用后台获取数据
             //然后再把数据返回到前台,进行显示
-            window.location.href = "edit?news_id="+news_id;
+            window.location.href = "edit?news_id="+news_id + "&&author_id=" + ${userMessage};
         }
 
     }

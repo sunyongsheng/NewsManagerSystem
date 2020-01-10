@@ -31,9 +31,9 @@ public class AddNewsServlet extends HttpServlet {
         News news = new News(newsTitle, newsContent, newsPostDate, keywords, authorId, category);
         NewsInterface newsInterface = new NewsDao();
         if (newsInterface.addNews(authorId, news)) {
-            request.setAttribute("addMessage", "添加成功");
+            request.setAttribute("addNewsMessage", "添加成功");
         } else {
-            request.setAttribute("addMessage", "添加失败");
+            request.setAttribute("addNewsMessage", "添加失败");
         }
         request.getRequestDispatcher("getAllNews").forward(request, response);
 
