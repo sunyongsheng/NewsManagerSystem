@@ -9,7 +9,7 @@
 <html>
 <script>
   function login() {
-      location.href = "author-admin.jsp";
+      location.href = "admin.jsp";
   }
 </script>
   <head>
@@ -24,28 +24,31 @@
   </form >
   <h1 align="center">网站名</h1>
   <form>
-    <div align="center">
-      <tr align="center">
-        <td>
-          <input type="submit" name="财经" value="财经">
-        </td>
-        <td>
-          <input type="submit" name="时政" value="时政">
-        </td>
-        <td>
-          <input type="submit" name="教育" value="教育">
-        </td>
-        <td>
-          <input type="submit" name="娱乐" value="娱乐">
-        </td>
-        <td>
-          <input type="submit" name="文化" value="文化">
-        </td>
-        <td>
-          <input type="submit" name="体育" value="体育">
-        </td>
-      </tr>
-    </div>
+      <div style="margin: 0;padding: 0;background-color: #f1f1f1;">
+          <ul id="menu" style="margin: 0;padding: 0;">
+              <ul>
+                  <li><a href="#"
+                         style="text-decoration: none;position: relative;color: #313131;font-size: 50px;font-weight: 700;font-family sans-serif; display: block; overflow: hidden;transition: 0.7s all;padding: 14px 20px;">体育</a>
+                  </li>
+                  <li><a href="#"
+                         style="text-decoration: none;position: relative;color: #313131;font-size: 50px;font-weight: 700;font-family sans-serif; display: block; overflow: hidden;transition: 0.7s all;padding: 14px 20px;">财经</a>
+                  </li>
+                  <li><a href="#"
+                         style="text-decoration: none;position: relative;color: #313131;font-size: 50px;font-weight: 700;font-family sans-serif; display: block; overflow: hidden;transition: 0.7s all;padding: 14px 20px;">时政</a>
+                  </li>
+                  <li><a href="#"
+                         style="text-decoration: none;position: relative;color: #313131;font-size: 50px;font-weight: 700;font-family sans-serif; display: block; overflow: hidden;transition: 0.7s all;padding: 14px 20px;"
+                         v>教育</a></li>
+                  <li><a href="#"
+                         style="text-decoration: none;position: relative;color: #313131;font-size: 50px;font-weight: 700;font-family sans-serif; display: block; overflow: hidden;transition: 0.7s all;padding: 14px 20px;">文化</a>
+                  </li>
+                  <li><a href="#"
+                         style="text-decoration: none;position: relative;color: #313131;font-size: 50px;font-weight: 700;font-family sans-serif; display: block; overflow: hidden;transition: 0.7s all;padding: 14px 20px;">科技</a>
+                  </li>
+              </ul>
+          </ul>
+
+      </div>
   </form>
   </body>
 </html>
