@@ -177,9 +177,10 @@ public class NewsDao implements NewsInterface {
     public List<News> getNewsByCategory(String category) {
         List<News> list = new ArrayList<>();
         try {
-            String sql = "SELECT * FROM student WHERE category=" + category;
+            String sql = "SELECT * FROM student WHERE category=?;";
             assert connection != null;
             preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, category);
             resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 int newsId = resultSet.getInt("news_id");
@@ -200,6 +201,34 @@ public class NewsDao implements NewsInterface {
         return list;
     }
 
+    @Override
+    public List<News> getNewsByNewsTitle(String newsTitle) {
+        List<News> list = new ArrayList<>();
+        try {
+            String sql = "SELECT * FROM student WHERE category LIKE ?;";
+            assert connection != null;
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, "%"+newsTitle+"%");
+            resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                int newsId = resultSet.getInt("news_id");
+                String newsTitle1 = resultSet.getString("news_title");
+                String newsContent = resultSet.getString("news_content");
+                Date newsPostDate = resultSet.getDate("news_post_date");
+                Date newsUpdateDate = resultSet.getDate("news_update_date");
+                String newsCategory = resultSet.getString("news_category");
+                String keywords = resultSet.getString("keywords");
+                String authorId = resultSet.getString("author_id");
+                int viewCount = resultSet.getInt("view_count");
+                list.add(new News(newsId, newsTitle1, newsContent, newsPostDate, newsUpdateDate, keywords, authorId, newsCategory, viewCount));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            DBUtil.close(connection, preparedStatement, resultSet);
+        }
+        return list;
+    }
 
     public static void main(String[] args) {
         List<News> temp = new NewsDao().getAllNews();

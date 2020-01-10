@@ -63,4 +63,6 @@ public interface NewsInterface {
      * @return 0：删除失败，未知错误；1：删除成功；-1：编辑失败，作者无权限
      */
     int editNewsByNewsId(String adminId, String authorId, News latestNews);
+
+    List<News> getNewsByNewsTitle(String newsTitle);
 }
