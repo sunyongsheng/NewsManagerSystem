@@ -21,11 +21,12 @@ public class DeleteAuthorServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String authorId = request.getParameter("author_id");
         AdminInterface adminInterface = new AdminDao();
-        if (adminInterface.deleteAuthorByAuthorId(authorId)) {
-            request.setAttribute("deleteAuthorMessage", "删除成功");
-        } else {
-            request.setAttribute("deleteAuthorMessage", "删除失败");
+        String[] authorIds = authorId.split(",");
+        int count = 0;
+        for (String a : authorIds) {
+            if (adminInterface.deleteAuthorByAuthorId(a)) count++;
         }
+        request.setAttribute("deleteAuthorMessage", "删除了" + count + "个作者账号");
         request.getRequestDispatcher("getAllNews").forward(request, response);
 
     }
