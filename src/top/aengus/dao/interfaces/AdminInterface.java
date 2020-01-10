@@ -1,6 +1,7 @@
 package top.aengus.dao.interfaces;
 
 import top.aengus.pojo.Admin;
+import top.aengus.pojo.Author;
 
 /**
  * @author Aengus Sun
@@ -11,5 +12,7 @@ import top.aengus.pojo.Admin;
 public interface AdminInterface {
     boolean adminLogin(Admin admin);
     boolean deleteAuthorByAuthorId(String authorId);
+
+    boolean addAuthor(Author author);
     boolean deleteNewsByNewsId(int newsId);
 }
