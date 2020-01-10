@@ -13,38 +13,49 @@
 <body>
 <div align="center">
     <h2>编辑新闻</h2>
-    <form action="EditStuServlet" method="post">
+    <form action="edit" method="post">
         <table>
             <tr>
-                <td>新闻标题:</td>
-                <td><input type="text" name="" value="${news.newsTitle}" readonly></td>
-            </tr>
-            <tr>
-                <td>发布日期:</td>
-                <td><input type="text" name="" value="${news.newsPostDate}"></td>
-            </tr>
-            <tr>
-                <td>关键词:</td>
-                <td><input type="text" name="" value="${news.keywords}"></td>
-            </tr>
-            <tr>
-                <td>类别：</td>
-                <td><input type="text" name="" value="${news.newsCategory}"></td>
-            </tr>
-            <tr>
-                <td>内容:</td>
-                <td><input type="text" name="" value="${news.newsContent}"></td>
-            </tr>
-
-            <tr>
-                <td colspan="2" align="center">
-                    <input type="submit" value="提交">
-                    <input type="button" value="取消" onclick="javascript:location.href='GetAllServlet'">
+                <td>
+                    <textarea rows="30" cols="60" name="新闻内容" style="font-size:20px; color: black;"></textarea>
                 </td>
+                <td>
+                    <table border="0">
+                        <td>
+                            <tr align="right">
+                                <td style="font-size:20px; color: black;">新闻标题:</td>
+                                <td><input type="text" name="" value="${news.newsTitle}"></td>
+                            </tr>
+                            <tr align="right">
+                                <td style="font-size:20px; color: black;">发布日期:</td>
+                                <td><input type="text" name="" value="${news.newsPostDate}"></td>
+                            </tr>
+                            <tr align="right">
+                                <td style="font-size:20px; color: black;">关键词:</td>
+                                <td><input type="text" name="" value="${news.keywords}"></td>
+                            </tr>
+                            <tr align="right">
+                                <td style="font-size:20px; color: black;">类别:</td>
+                                <td><input type="text" name="" value="${news.newsCategory}"></td>
+                            </tr>
+                            <tr align="right">
+                                <td style="font-size:20px; color: black;">阅读量:</td>
+                                <td><input type="text" name="" value="${news.viewCount}"></td>
+                            </tr>
+                            <tr align="right">
+                                <td style="font-size:20px; color: black;" colspan="2" align="center">
+                                    <input type="submit" value="提交">
+                                    <input type="button" value="取消" onclick="javascript:location.href='GetAllServlet'">
+                                </td>
+                            </tr>
+                        </td>
+                    </table>
+                </td>
+
             </tr>
         </table>
-    </form>
 
+    </form>
 </div>
 </body>
 </html>

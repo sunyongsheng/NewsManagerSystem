@@ -12,16 +12,20 @@
     <title>读者界面</title>
 </head>
 <script>
+    function back() {
+        location.href = "index.jsp";
+
+    }
     function addNews() {
         location.href="add.jsp";
     }
 
     function editNews(){
         //首先判断用户是否选择了要编辑的记录
-        let chks = document.getElementsByName("chk");
-        let count = 0;//用来记录用户选择的记录数
-        let index = 0;//用来记录被选中的复选框的序号
-        for(let i=0; i<chks.length; i++){
+        var chks = document.getElementsByName("chk");
+        var count = 0;//用来记录用户选择的记录数
+        var index = 0;//用来记录被选中的复选框的序号
+        for (var i = 0; i < chks.length; i++) {
             if (chks[i].checked) {
                 count ++;//等价于count + 1
                 index = i;
@@ -35,7 +39,7 @@
         } else {
             //进行编辑操作
             //获取要编辑新闻的信息
-            let news_id = chks[index].value;
+            var news_id = chks[index].value;
             alert(news_id);
             //进入编辑页面,将当前新闻的信息显示在编辑页面中
             //我们从数据库中获取新闻信息,首先要调用后台获取数据
@@ -47,9 +51,9 @@
 
     function delNews(){
         //获取所有复选框,查看是否选择了记录
-        let chks = document.getElementsByName("chk");
-        let news_ids = ""; //用来存储要删除的学生学号
-        for(let i=0; i<chks.length; i++){
+        var chks = document.getElementsByName("chk");
+        var news_ids = ""; //用来存储要删除的学生学号
+        for (var i = 0; i < chks.length; i++) {
             if(chks[i].checked){
                 //当前复选框被选中,获取当前学生的学号
                 news_ids += chks[i].value ;
@@ -61,16 +65,16 @@
         }else{
             if(confirm("确定删除么?")){
                 //调用后台,执行删除操作
-                window.location.href = "deleteNews?news_ids=" + news_ids + "&&author_id=" + ${userMessage};
+                window.location.href = "devareNews?news_ids=" + news_ids + "&&author_id=" + ${userMessage};
             }
         }
     }
 
     function checkAll() {
         //获取全选框
-        let node = document.getElementById("chkAll");
+        var node = document.getElementById("chkAll");
         //获取记录前的复选框
-        let chks = document.getElementsByName("chk");
+        var chks = document.getElementsByName("chk");
 
         if (node.checked) {//全选框被选中
             for (var i = 0; i < chks.length; i++) {
@@ -86,13 +90,13 @@
 
     function unCheck(chk_s){
         //获取全选框
-        let chkall = document.getElementById("chkAll");
+        var chkall = document.getElementById("chkAll");
         if (!chk_s.checked) {//当前复选框没有选中,那么全选框也不被选中
             chkall.checked = false;
         } else {
-            let chks = document.getElementsByName("chk");
-            let isAll = true;//标记目前是否全选
-            for (let i=0; i<chks.length; i++) {
+            var chks = document.getElementsByName("chk");
+            var isAll = true;//标记目前是否全选
+            for (var i = 0; i < chks.length; i++) {
                 if(!chks[i].checked){
                     isAll = false;
                     break;
@@ -104,6 +108,11 @@
     }
 </script>
 <body>
+<form align="right">
+    <td>
+        <input type="button" value="退出" onclick="back()">
+    </td>
+</form>
 <div align="center">
     <h2>欢迎${userMessage}使用新闻管理系统</h2>
     <input type="button" value="新增" onclick=" addNews()">
