@@ -10,5 +10,5 @@ import top.aengus.pojo.Author;
  */
 public interface AuthorInterface {
     boolean authorLogin(Author author);
-
+    boolean authorIdAvailable(String authorId);
 }
