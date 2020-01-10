@@ -16,6 +16,7 @@
     <h2>后台管理</h2>
     <form action="login" method="post">
         <h4>管理员登录</h4>
+        <a style="color:red">${loginMessage}</a>
         <table>
             <tr>
                 <td align="right">用户名:</td>
