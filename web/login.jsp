@@ -84,18 +84,19 @@
 <body>
 <div align="center">
     <h2>后台管理</h2>
-    <form>
+    <form action="login" method="post">
         <h4>管理员登录</h4>
         <a style="color:red">${loginMessage}</a>
         <div class="login-box">
-            <form class="login-form" action="login" method="post">
+            <form class="login-form">
                 <div class="hide-login-btn"><i class="fa fa-times" aria-hidden="true"></i>
 
                 </div>
                 <h3>欢迎登录 </h3>
-                <input class="txtb" type="text" name="username">
-                <input class="txtb" type="password" name="password">
+                <input class="txtb" type="text" name="username" placeholder="用户名">
+                <input class="txtb" type="password" name="password" placeholder="密码">
                 <input class="login-btn" type="submit" value="登录">
+                <a style="color: red;">${loginMessage}</a>
             </form>
         </div>
 
