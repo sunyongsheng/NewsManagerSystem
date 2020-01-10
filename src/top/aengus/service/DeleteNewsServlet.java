@@ -38,12 +38,7 @@ public class DeleteNewsServlet extends HttpServlet {
         } else {
             request.setAttribute("editMessage", "删除了" + count + "条纪录，中间有问题出现，请与开发者联系");
         }
-
-        if (adminId != null) {
-            request.getRequestDispatcher("admin.jsp").forward(request, response);
-        } else {
-            request.getRequestDispatcher("author-admin.jsp").forward(request, response);
-        }
+        request.getRequestDispatcher("getAllNews").forward(request, response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
