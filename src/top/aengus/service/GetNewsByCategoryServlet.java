@@ -3,6 +3,7 @@ package top.aengus.service;
 import top.aengus.dao.impl.NewsDao;
 import top.aengus.dao.interfaces.NewsInterface;
 import top.aengus.pojo.News;
+import top.aengus.utils.CategoryMap;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -25,7 +26,9 @@ public class GetNewsByCategoryServlet extends HttpServlet {
         String category = request.getParameter("category");
         NewsInterface newsInterface = new NewsDao();
         List<News> res = newsInterface.getNewsByCategory(category);
-
+        request.setAttribute("newsList", res);
+        String address = CategoryMap.categoryMap.get(category) + ".jsp";
+        request.getRequestDispatcher(address).forward(request, response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
