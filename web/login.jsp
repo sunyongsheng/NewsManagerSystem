@@ -15,30 +15,27 @@
         * {
             font-family: "montserrat", sans-serif;
         }
-
         body {
             margin: 0;
             padding: 0;
-            background: #333;
+            background-color: grey;
         }
 
         .login-box {
-            position: absolute;
-            top: 0;
+            position: relative;
+            top: 30%;
             left: 0;
             width: 100%;
-            height: 100vh;
-            background-image: linear-gradient(45deg, #9fbaa8, #31354c);
-            transition: 0.4s;
+            height: 100%;
         }
 
         .login-form {
             position: absolute;
-            top: 70%;
+            top: 0;
             left: 50%;
-            transform: translate(-50%, -50%);
-            color: slategray;
+            color: black;
             text-align: center;
+            background-color: white;
         }
 
         .login-form h1 {
@@ -51,12 +48,12 @@
             box-sizing: border-box;
             width: 240px;
             background: #ffffff28;
-            border: 1px solid white;
+            border: 1px solid black;
             padding: 10px 20px;
             color: black;
             outline: none;
             margin: 10px 0;
-            border-radius: 6px;
+            border-radius: 10px;
             text-align: center;
         }
 
@@ -77,27 +74,22 @@
             right: 40px;
             cursor: pointer;
             font-size: 24px;
-            opacity: .7;
         }
     </style>
 </head>
 <body>
-<div align="center">
-    <h2>后台管理</h2>
+<div align="center" style="margin-top: 120px">
     <form action="login" method="post">
-        <h4>管理员登录</h4>
-        <a style="color:red">${loginMessage}</a>
         <div class="login-box">
             <form class="login-form">
-                <div class="hide-login-btn"><i class="fa fa-times" aria-hidden="true"></i>
-
+                <div class="hide-login-btn"><i class="fa fa-times" aria-hidden="true" onclick="javascript: window.location.href = 'getAllNews'"></i>
                 </div>
-                <h3>欢迎登录 </h3>
+                <h3 style="color: black; font-weight: bold">Welcome</h3>
                 <input class="txtb" type="text" name="username" placeholder="用户名">
                 <input class="txtb" type="password" name="password" placeholder="密码">
                 <input class="login-btn" type="submit" value="登录">
                 <p class="message" style="color: black">没有账户？<a href="add-author.jsp">注册</a></p>
-                <a style="color: red;">${loginMessage}</a>
+                <a class="message" style="color: red;">${loginMessage}</a>
             </form>
         </div>
 

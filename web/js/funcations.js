@@ -45,6 +45,5 @@ function checkIdCanUse() {
             msg.innerText = null;
         }
     }
-
 }
 

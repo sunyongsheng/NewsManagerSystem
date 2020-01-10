@@ -7,7 +7,6 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-<link href="css/bootstrap.css" rel="stylesheet">
 <head>
     <title>新闻首页</title>
     <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css">
@@ -83,28 +82,49 @@
 </head>
 <body>
 <div align="center">
-    <h2>注册</h2>
     <form action="addAuthor" method="post">
-        <h4>管理员登录</h4>
-        <a style="color:red">${loginMessage}</a>
         <div class="login-box">
             <form class="login-form">
-                <div class="hide-login-btn"><i class="fa fa-times" aria-hidden="true"></i>
-
+                <h3 style="color: white; font-weight: bold">Welcome</h3>
+                <div class="hide-login-btn"><i class="fa fa-times" aria-hidden="true" onclick="javascript: window.location.href = 'getAllNews'"></i>
                 </div>
-                <h3>欢迎登录 </h3>
-                <input class="txtb" type="text" name="author_id" placeholder="用户名">
+                <input class="txtb" type="text" name="author_id" id="author_id" placeholder="用户名" onblur="checkIdCanUse()">
                 <input class="txtb" type="password" name="author_password" placeholder="密码">
                 <input class="txtb" type="password" name="password_again" placeholder="确认密码">
-                <input class="txtb" type="password" name="author_name" placeholder="姓名">
+                <input class="txtb" type="text" name="author_name" placeholder="姓名">
                 <input class="login-btn" type="submit" value="注册">
                 <p class="message" style="color: black">已有账户？<a href="login.jsp">登录</a></p>
-                <a style="color: red;">${loginMessage}</a>
             </form>
         </div>
-
     </form>
 </div>
-
 </body>
+<script>
+    function crateXml() {
+        try {
+            return new XMLHttpRequest();
+        } catch (e) {
+            e.printStackTrace();
+            try {
+                return new ActiveObject("Microsoft.XMLHttp");
+            } catch (e) {
+                alert("浏览器版本过低");
+            }
+        }
+    }
+    function checkIdCanUse() {
+        let name = document.getElementById("author_id").value;
+        let msg = document.getElementById("author_id_msg");
+        let xmlHttp = crateXml();
+        xmlHttp.open("get", "existId?author_id=" + name, true);
+        xmlHttp.send(null);
+        xmlHttp.onreadystatechange = function () {
+            if (xmlHttp.readyState === 4 && xmlHttp.status === 200) {
+                msg.innerText = xmlHttp.responseText;
+            } else {
+                msg.innerText = "此账号可用";
+            }
+        }
+    }
+</script>
 </html>
