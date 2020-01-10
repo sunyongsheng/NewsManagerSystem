@@ -9,13 +9,14 @@
 <html>
 <script>
   function login() {
-      location.href = "login.jsp";
+      location.href = "author-admin.jsp";
   }
 </script>
   <head>
     <title>新闻首页</title>
   </head>
-  <body>
+
+<body>
   <form align="right">
     <td>
       <input type="button" value="登录" onclick="login()">

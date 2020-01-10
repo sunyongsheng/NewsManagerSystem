@@ -7,12 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-<script>
-    function manage() {
-
-
-    }
-</script>
+<link href="css/bootstrap.css" rel="stylesheet">
 <head>
     <title>新闻首页</title>
 </head>
@@ -28,7 +23,7 @@
             </tr>
             <tr>
                 <td align="right">密码：</td>
-                <td><input type ="text" name="password"></td>
+                <td><input type="password" name="password"></td>
             </tr>
             <tr>
                 <td colspan="2" align="center">
