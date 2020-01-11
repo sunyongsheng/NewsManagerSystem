@@ -63,7 +63,7 @@
         }
 
         .news-content {
-            background: #fff;
+            background: whitesmoke;
             margin-top: 3%;
             line-height: 2.2;
             margin-bottom: 2em;
@@ -133,7 +133,7 @@
         }
     </style>
 </head>
-<body style="background:#fff">
+<body style="background:whitesmoke">
     <div class="navbar">
     <ul>
         <li>
