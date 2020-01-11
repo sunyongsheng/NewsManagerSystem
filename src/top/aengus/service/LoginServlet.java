@@ -48,7 +48,7 @@ public class LoginServlet extends HttpServlet {
             session.setAttribute("user", null);
             session.setAttribute("userMessage", null);
             request.setAttribute("loginMessage", "登陆失败，用户名或密码错误");
-            request.getRequestDispatcher("getAllNews").forward(request, response);
+            request.getRequestDispatcher("login.jsp").forward(request, response);
         }
     }
 
