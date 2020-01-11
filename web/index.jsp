@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
-<link rel="stylesheet" href="css/bootstrap.css">
+
 <script>
   function login() {
       location.href = "login.jsp";
@@ -31,7 +31,7 @@
           #menu li a {
               text-decoration: none;
               position: relative;
-              color: #313131;
+              color: black;
               font-size: 20px;
               font-weight: 700;
               font-family: sans-serif;
@@ -44,38 +44,38 @@
 
           #menu li a:before {
               content: '';
-              width: 30px;
+              width: 25px;
               position: absolute;
-              border-bottom: 6px solid #313131;
+              border-bottom: 6px solid #000000;
               bottom: 0px;
-              right: 200px;
+              right: 150px;
               transition: 0.7s all;
           }
 
           #menu li a:hover:before {
-              right: 0;
+              right: 50%;
           }
 
           body {
               margin: 0;
               padding: 0;
-              background: #DCDCDC;
+              background: white;
           }
 
           .search-box {
               position: absolute;
-              top: 19.5%;
+              top: 9%;
               left: 80%;
               transform: translate(-50, -50);
-              background: #2f3640;
-              height: 15px;
-              border-radius: 10px;
+              background: #ffffff;
+              height: 35px;
+              border-radius: 35px;
               padding: 10px;
 
           }
 
           .search-box:hover > .search-txt {
-              width: 170px;
+              width: 190px;
               padding: 0 25px;
           }
 
@@ -84,12 +84,12 @@
           }
 
           .search-btn {
-              color: #e84118;
+              color: black;
               float: left;
-              width: 35px;
-              height: 35px;
+              width: 40px;
+              height: 40px;
               border-radius: 50%;
-              background: #2f3640;
+              background: #ffffff;
               display: flex;
               justify-content: center;
               align-items: center;
@@ -108,15 +108,61 @@
               line-height: 20px;
               width: 0px;
           }
+
+          .login-page:hover {
+              color: black;
+              border: 2px solid;
+          }
+
+
+          .login-page {
+              position: absolute;
+              top: 5%;
+              right: 0%;
+              transform: translate(-50%, -50%);
+
+
+              padding: 1px;
+              cursor: pointer;
+              font-size: 5px;
+              color: #666;
+          }
+
+          .news-form {
+              position: absolute;
+              top: 20%;
+              width: 70%;
+              justify-content: center;
+
+          }
+
+          #news-page td {
+              text-decoration: none;
+              position: relative;
+              color: black;
+              font-size: 20px;
+              font-weight: 550px;
+              font-family: sans-serif;
+              overflow: hidden;
+              transition: 0.7s all;
+              padding: 10px 50px;
+              content: '';
+              border-bottom: 4px solid #666;
+          }
+
       </style>
   </head>
 
 <body>
   <form align="right">
-    <td>
-      <input type="button" value="登录" onclick="login()">
-    </td>
+      <div>
+          <div class="login-page" onclick="javascript:location.href='login.jsp'">
+              <i class="fa fa-sign-in" aria-hidden="true"></i> 登录/注册
+          </div>
+
+      </div>
   </form >
+
   <h1 align="center">新闻管理系统</h1>
   <div class="search-box">
       <input class="search-txt" type="text" id="search_title" placeholder="输入搜索内容" onchange="getInputValue()">
@@ -155,23 +201,20 @@
       </div>
   </form>
 <div>
-    <div class="col-md-6" align="center">
+    <div class="news-form">
         <table>
-            <tr>
-                <td>分类</td>
-                <td>标题</td>
-                <td>发布时间</td>
-                <td>浏览量</td>
-            </tr>
-            <c:forEach items="${newsList}" var="news">
-                <tr>
+
+            <tr class="news-form">
+                <c:forEach items="${newsList}" var="news">
+            <tr id="news-page">
                     <td>${news.newsCategory}</td>
                     <td><a href="viewNews?news_id=${news.newsId}">${news.newsTitle}<a></a></td>
                     <td>${news.newsPostDate}</td>
-                    <td>${news.viewCount}</td>
+                <td>浏览量:${news.viewCount}</td>
                 </tr>
             </c:forEach>
-            </table>
+            </tr>
+        </table>
         </div>
     </div>
 </body>

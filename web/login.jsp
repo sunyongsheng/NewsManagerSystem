@@ -71,7 +71,7 @@
         .hide-login-btn {
             color: black;
             position: absolute;
-            top: 0;
+            top: 0%;
             right:40px;
             cursor: pointer;
             font-size: 24px;
@@ -81,6 +81,7 @@
 <body>
 <div align="center" style="margin-top: 150px">
     <form action="login" method="post">
+
         <div class="login-box">
             <form class="login-form">
                 <div class="hide-login-btn"><i class="fa fa-times" aria-hidden="true" onclick="javascript: window.location.href = 'getAllNews'"></i>
