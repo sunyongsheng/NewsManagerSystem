@@ -30,7 +30,16 @@
                 关键词：<br>
                 <input style="background-color: #C0C0C0" type="text" name="keywords"><br>
                 类别：<br>
-                <input style="background-color: #C0C0C0" type="text" name="news_category"><br>
+                <select name="news_category" style="width: 200px">
+                    <option selected>默认</option>
+                    <option>体育</option>
+                    <option>财经</option>
+                    <option>时政</option>
+                    <option>教育</option>
+                    <option>文化</option>
+                    <option>科技</option>
+                </select>
+                <br>
                 阅读量：<br>
                 <input style="background-color: #C0C0C0" type="number" name="view_count" value="0" readonly>
             </td>

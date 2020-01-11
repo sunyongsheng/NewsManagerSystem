@@ -10,88 +10,24 @@
 <head>
     <title>新增作者</title>
     <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css">
-    <style>
-        * {
-            font-family: "montserrat", sans-serif;
-        }
-        body {
-            margin: 0;
-            padding: 0;
-            background-color: #FFFFFF;
-        }
-
-        .login-box {
-            width: 100%;
-            height: 100%;
-        }
-
-        .login-form {
-            position: absolute;
-            top: 10%;
-            left: 50%;
-            color: #0099CC;
-            text-align: center;
-            background-color: white;
-        }
-
-        .login-form h1 {
-            margin-top: 0;
-            font-weight: bold;
-        }
-
-        .input-style {
-            display: block;
-            box-sizing: border-box;
-            width: 240px;
-            background: white;
-            border: 1px solid #0099CC;
-            padding: 10px 20px;
-            color: #666666;
-            outline: none;
-            margin: 5px 0;
-            border-radius: 20px;
-            text-align: center;
-        }
-        .login-btn {
-            width: 5em;
-            background: #0099CC;
-            border: 0;
-            color: white;
-            padding: 8px 10px;
-            border-radius: 20px;
-            cursor: pointer;
-            margin-top: 5px;
-            margin-bottom: 10px;
-        }
-        .cancel-btn {
-            width: 5em;
-            background: #FF0033;
-            border: 0;
-            color: white;
-            padding: 8px 10px;
-            border-radius: 20px;
-            cursor: pointer;
-            margin-top: 5px;
-            margin-bottom: 10px;
-        }
-    </style>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 <div align="center" style="margin-top: 150px">
     <form action="addAuthor" method="post" onsubmit="return canRegister()">
         <div class="login-box">
             <form class="login-form">
-                <h1 style="font-weight: bold">新增读者</h1>
+                <h1 style="font-weight: bold">新增作者</h1>
                 <table border="0" style="position: relative;left: 4%">
                     <tr>
                         <td>
-                            <input class="input-style" type="text" name="author_id" id="author_id" placeholder="用户名" onblur="checkIdCanUse()">
+                            <input class="circular-input-style" type="text" name="author_id" id="author_id" placeholder="用户名" onblur="checkIdCanUse()">
                         </td>
                         <td><p id="author_id_msg" style="color: indianred; width: 120px; font-size: 13px"></p></td>
                     </tr>
                     <tr>
                         <td>
-                            <input class="input-style" type="password" name="author_password" id="password" placeholder="密码" onblur="checkPasswordStrength()">
+                            <input class="circular-input-style" type="password" name="author_password" id="password" placeholder="密码" onblur="checkPasswordStrength()">
                         </td>
                         <td>
                             <p id="password_msg" style="color: indianred; width: 120px; font-size: 13px"></p>
@@ -99,7 +35,7 @@
                     </tr>
                     <tr>
                         <td>
-                            <input class="input-style" type="password" name="password_again" id="password_again" placeholder="确认密码" onblur="checkPasswordAgain()">
+                            <input class="circular-input-style" type="password" name="password_again" id="password_again" placeholder="确认密码" onblur="checkPasswordAgain()">
                         </td>
                         <td>
                             <p id="password_again_msg" style="color: indianred; width: 120px; font-size: 13px"></p>
@@ -107,7 +43,7 @@
                     </tr>
                     <tr>
                         <td>
-                            <input class="input-style" type="text" name="author_name" placeholder="姓名">
+                            <input class="circular-input-style" type="text" name="author_name" placeholder="姓名">
                         </td>
                         <td>
 
@@ -115,7 +51,7 @@
                     </tr>
                     <tr>
                         <td style="position: relative;left: 13%">
-                            <input class="login-btn" type="submit" value="新增">
+                            <input class="confirm-btn" type="submit" value="新增">
                             <input class="cancel-btn" type="button" value="取消" onclick="javascript: window.location.href='getAllNews'">
                         </td>
                     </tr>

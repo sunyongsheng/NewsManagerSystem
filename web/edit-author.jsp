@@ -39,7 +39,7 @@
             font-weight: bold;
         }
 
-        .input-style {
+        .edit-news-input-style {
             display: block;
             box-sizing: border-box;
             width: 240px;
@@ -53,7 +53,7 @@
             text-align: center;
         }
 
-        .login-btn {
+        .confirm-btn {
             width: 5em;
             background: #0099CC;
             border: 0;
@@ -86,13 +86,13 @@
                 <table border="0" style="position: relative;left: 4%">
                     <tr>
                         <td>
-                            <input class="input-style" type="text" name="author_id" id="author_id" placeholder="用户名" value="${author.authorId}" readonly>
+                            <input class="circular-input-style" type="text" name="author_id" id="author_id" placeholder="用户名" value="${author.authorId}" readonly>
                         </td>
                         <td><p id="author_id_msg" style="color: indianred; width: 120px; font-size: 13px"></p></td>
                     </tr>
                     <tr>
                         <td>
-                            <input class="input-style" type="password" name="author_password" id="password" placeholder="密码" value="${author.authorPassword}" onblur="checkPasswordStrength()">
+                            <input class="circular-input-style" type="password" name="author_password" id="password" placeholder="密码" value="${author.authorPassword}" onblur="checkPasswordStrength()">
                         </td>
                         <td>
                             <p id="password_msg" style="color: indianred; width: 120px; font-size: 13px"></p>
@@ -100,7 +100,7 @@
                     </tr>
                     <tr>
                         <td>
-                            <input class="input-style" type="password" name="password_again" id="password_again" placeholder="确认密码" value="${author.authorPassword}" onblur="checkPasswordAgain()">
+                            <input class="circular-input-style" type="password" name="password_again" id="password_again" placeholder="确认密码" value="${author.authorPassword}" onblur="checkPasswordAgain()">
                         </td>
                         <td>
                             <p id="password_again_msg" style="color: indianred; width: 120px; font-size: 13px"></p>
@@ -108,7 +108,7 @@
                     </tr>
                     <tr>
                         <td>
-                            <input class="input-style" type="text" name="author_name" value="${author.authorName}" placeholder="姓名">
+                            <input class="circular-input-style" type="text" name="author_name" value="${author.authorName}" placeholder="姓名">
                         </td>
                         <td>
 
