@@ -23,6 +23,7 @@
             margin: 10px 5px;
             background-color: #0099CC;
             color: white;
+            cursor: pointer;
         }
 
         .edit-news-button {
@@ -33,6 +34,7 @@
             margin: 10px 5px;
             background-color: #009999;
             color: white;
+            cursor: pointer;
         }
 
         .del-news-button {
@@ -43,6 +45,7 @@
             margin: 10px 5px;
             background-color: #FF0033;
             color: white;
+            cursor: pointer;
         }
 
         .add-author-button {
@@ -53,6 +56,7 @@
             margin: 10px 5px;
             background-color: #0099CC;
             color: white;
+            cursor: pointer;
         }
 
         .edit-author-button {
@@ -63,6 +67,7 @@
             margin: 10px 5px;
             background-color: #009999;
             color: white;
+            cursor: pointer;
         }
 
         .del-author-button {
@@ -73,6 +78,7 @@
             margin: 10px 5px;
             background-color: #FF0033;
             color: white;
+            cursor: pointer;
         }
 
         .quit-button {
@@ -85,6 +91,7 @@
             background-color: #FF0033;
             color: white;
             border: none;
+            cursor: pointer;
         }
 
         .table-news {

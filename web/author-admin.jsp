@@ -22,6 +22,7 @@
             margin: 10px 5px;
             background-color: #0099CC;
             color: white;
+            cursor: pointer;
         }
         .edit-news-button {
             border: none;
@@ -31,6 +32,7 @@
             margin: 10px 5px;
             background-color: #009999;
             color: white;
+            cursor: pointer;
         }
         .del-news-button {
             border: none;
@@ -40,6 +42,7 @@
             margin: 10px 5px;
             background-color: #FF0033;
             color: white;
+            cursor: pointer;
         }
         .quit-button {
             height: 40px;
@@ -51,6 +54,7 @@
             background-color: orangered;
             color: white;
             border: none;
+            cursor: pointer;
         }
 
         .table-news {
