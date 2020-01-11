@@ -19,6 +19,7 @@ import java.io.IOException;
 @WebServlet("/deleteNews")
 public class DeleteNewsServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("utf-8");
         String newsIds=request.getParameter("news_ids");
         String authorId = request.getParameter("author_id");
         String adminId = request.getParameter("admin_id");

@@ -20,6 +20,7 @@ import java.io.IOException;
 @WebServlet("/addAuthor")
 public class AddAuthorServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("utf-8");
         String authorId = request.getParameter("author_id");
         String authorPassword = request.getParameter("author_password");
         String authorName = request.getParameter("author_name");

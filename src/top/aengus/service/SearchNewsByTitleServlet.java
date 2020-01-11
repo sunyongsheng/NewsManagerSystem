@@ -21,6 +21,7 @@ import java.util.List;
 @WebServlet("/searchNewsByTitle")
 public class SearchNewsByTitleServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("utf-8");
         String queryText = request.getParameter("search_title");
         NewsInterface newsInterface = new NewsDao();
         List<News> searchRes = newsInterface.getNewsByNewsTitle(queryText);

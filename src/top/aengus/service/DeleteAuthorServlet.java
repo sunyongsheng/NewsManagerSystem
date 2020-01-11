@@ -19,6 +19,7 @@ import java.io.IOException;
 @WebServlet("/deleteAuthor")
 public class DeleteAuthorServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("utf-8");
         String authorId = request.getParameter("author_id");
         AdminInterface adminInterface = new AdminDao();
         String[] authorIds = authorId.split(",");
