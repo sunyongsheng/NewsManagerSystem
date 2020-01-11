@@ -3,7 +3,6 @@ package top.aengus.service;
 import top.aengus.dao.impl.NewsDao;
 import top.aengus.dao.interfaces.NewsInterface;
 import top.aengus.pojo.News;
-import top.aengus.utils.CategoryMap;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
