@@ -37,7 +37,7 @@
                 alert("只能选择一条数据进行编辑");
             } else {
                 var news_id = chks[index].value;
-                window.location.href = "edit?news_id=" + news_id;
+                window.location.href = "editNews?news_id=" + news_id;
             }
 
         }
