@@ -10,70 +10,7 @@
 <html>
 <head>
     <title>作者界面</title>
-    <style>
-        *{
-            font-family: "Microsoft YaHei UI", serif;
-        }
-        .add-news-button {
-            border: none;
-            border-radius: 5px;
-            width: 60px;
-            height: 30px;
-            margin: 10px 5px;
-            background-color: #0099CC;
-            color: white;
-            cursor: pointer;
-        }
-        .edit-news-button {
-            border: none;
-            border-radius: 5px;
-            width: 60px;
-            height: 30px;
-            margin: 10px 5px;
-            background-color: #009999;
-            color: white;
-            cursor: pointer;
-        }
-        .del-news-button {
-            border: none;
-            border-radius: 5px;
-            width: 60px;
-            height: 30px;
-            margin: 10px 5px;
-            background-color: #FF0033;
-            color: white;
-            cursor: pointer;
-        }
-        .quit-button {
-            height: 40px;
-            width: 40px;
-            position: absolute;
-            top: 8%;
-            right: 5%;
-            border-radius: 50%;
-            background-color: orangered;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
-
-        .table-news {
-            border: 0;
-            width: 70%;
-            background-color: transparent;
-            padding: 5px 10px;
-            margin: 30px 10px;
-        }
-        .table-news-header {
-            height: 35px;
-            font-weight: bold;
-            background-color: #0099CC;
-            color: white;
-        }
-        .table-row {
-            height: 35px;
-        }
-    </style>
+    <link rel="stylesheet" href="css/style.css">
     <script>
         function back() {
             window.location.href = "getAllNews?quit=true";
