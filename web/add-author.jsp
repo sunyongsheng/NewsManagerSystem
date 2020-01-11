@@ -14,92 +14,144 @@
         * {
             font-family: "montserrat", sans-serif;
         }
-
         body {
             margin: 0;
             padding: 0;
-            background: #333;
+            background-color: #FFFFFF;
         }
 
         .login-box {
-            position: absolute;
-            top: 0;
-            left: 0;
             width: 100%;
-            height: 100vh;
-            background-image: linear-gradient(45deg, #9fbaa8, #31354c);
-            transition: 0.4s;
+            height: 100%;
         }
 
         .login-form {
             position: absolute;
-            top: 70%;
+            top: 10%;
             left: 50%;
-            transform: translate(-50%, -50%);
-            color: slategray;
+            color: #0099CC;
             text-align: center;
+            background-color: white;
         }
 
         .login-form h1 {
-            font-weight: 400;
             margin-top: 0;
+            font-weight: bold;
         }
 
-        .txtb {
+        .input-style {
             display: block;
             box-sizing: border-box;
             width: 240px;
-            background: #ffffff28;
-            border: 1px solid white;
+            background: white;
+            border: 1px solid #0099CC;
             padding: 10px 20px;
-            color: black;
+            color: #666666;
             outline: none;
-            margin: 10px 0;
-            border-radius: 6px;
+            margin: 5px 0;
+            border-radius: 20px;
             text-align: center;
         }
 
         .login-btn {
-            width: 240px;
-            background: #2c3e50;
+            width: 150px;
+            background: #0099CC;
             border: 0;
             color: white;
-            padding: 10px;
-            border-radius: 6px;
+            padding: 8px 10px;
+            border-radius: 20px;
             cursor: pointer;
+            margin-top: 5px;
+            margin-bottom: 10px;
         }
 
         .hide-login-btn {
             color: black;
-            position: absolute;;
-            top: 40px;
-            right: 40px;
+            position: absolute;
+            right:40px;
             cursor: pointer;
             font-size: 24px;
-            opacity: .7;
         }
     </style>
 </head>
 <body>
-<div align="center">
+<div align="center" style="margin-top: 150px">
     <form action="addAuthor" method="post">
         <div class="login-box">
             <form class="login-form">
-                <h3 style="color: white; font-weight: bold">Welcome</h3>
                 <div class="hide-login-btn"><i class="fa fa-times" aria-hidden="true" onclick="javascript: window.location.href = 'getAllNews'"></i>
                 </div>
-                <input class="txtb" type="text" name="author_id" id="author_id" placeholder="用户名" onblur="checkIdCanUse()">
-                <input class="txtb" type="password" name="author_password" placeholder="密码">
-                <input class="txtb" type="password" name="password_again" placeholder="确认密码">
-                <input class="txtb" type="text" name="author_name" placeholder="姓名">
-                <input class="login-btn" type="submit" value="注册">
-                <p class="message" style="color: black">已有账户？<a href="login.jsp">登录</a></p>
+                <h1 style="font-weight: bold">Welcome</h1>
+                <table border="0" style="position: relative;left: 4%">
+                    <tr>
+                        <td>
+                            <input class="input-style" type="text" name="author_id" id="author_id" placeholder="用户名" onblur="checkIdCanUse()">
+                        </td>
+                        <td><p id="author_id_msg" style="color: indianred; width: 120px; font-size: 13px"></p></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input class="input-style" type="password" name="author_password" id="password" placeholder="密码" onblur="checkPasswordStrength()">
+                        </td>
+                        <td>
+                            <p id="password_msg" style="color: indianred; width: 120px; font-size: 13px"></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input class="input-style" type="password" name="password_again" id="password_again" placeholder="确认密码" onblur="checkPasswordAgain()">
+                        </td>
+                        <td>
+                            <p id="password_again_msg" style="color: indianred; width: 120px; font-size: 13px"></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input class="input-style" type="text" name="author_name" placeholder="姓名">
+                        </td>
+                        <td>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="position: relative;left: 13%">
+                            <input class="login-btn" type="submit" value="注册">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="position: relative;left: 18%">
+                            <p style="color: black; font-size: 15px">已有账户？<a href="login.jsp">登录</a></p>
+                        </td>
+                    </tr>
+                </table>
+
             </form>
         </div>
     </form>
 </div>
 </body>
 <script>
+
+    function checkPasswordStrength() {
+        var password = document.getElementById("password");
+        var passwordMsg = document.getElementById("password_msg");
+        if (password.value.length <= 6) {
+            passwordMsg.innerText = "长度必须大于6"
+        } else {
+            passwordMsg.innerText = null;
+        }
+    }
+
+    function checkPasswordAgain() {
+        var password = document.getElementById("password");
+        var passwordAgain = document.getElementById("password_again");
+        var passwordAgainMsg = document.getElementById("password_again_msg");
+        if (password.value !== passwordAgain.value) {
+            passwordAgainMsg.innerText = "两次密码必须一致！"
+        } else {
+            passwordAgainMsg.innerText = null;
+        }
+    }
     function crateXml() {
         try {
             return new XMLHttpRequest();

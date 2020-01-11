@@ -18,12 +18,12 @@
         body {
             margin: 0;
             padding: 0;
-            background-color: grey;
+            background-color: #FFFFFF;
         }
 
         .login-box {
             position: relative;
-            top: 30%;
+            top: 50%;
             left: 0;
             width: 100%;
             height: 100%;
@@ -31,68 +31,68 @@
 
         .login-form {
             position: absolute;
-            top: 0;
+            top: 10%;
             left: 50%;
-            color: black;
+            color: #0099CC;
             text-align: center;
             background-color: white;
         }
 
         .login-form h1 {
-            font-weight: 400;
             margin-top: 0;
+            font-weight: bold;
         }
 
-        .txtb {
+        .input-style {
             display: block;
             box-sizing: border-box;
             width: 240px;
-            background: #ffffff28;
-            border: 1px solid black;
+            background: white;
+            border: 1px solid #0099CC;
             padding: 10px 20px;
-            color: black;
+            color: #666666;
             outline: none;
-            margin: 10px 0;
-            border-radius: 10px;
+            margin: 15px 0;
+            border-radius: 20px;
             text-align: center;
         }
 
         .login-btn {
-            width: 240px;
-            background: #2c3e50;
+            width: 150px;
+            background: #0099CC;
             border: 0;
             color: white;
-            padding: 10px;
-            border-radius: 6px;
+            padding: 8px 10px;
+            border-radius: 20px;
             cursor: pointer;
+            margin-bottom: 10px;
         }
 
         .hide-login-btn {
             color: black;
-            position: absolute;;
-            top: 40px;
-            right: 40px;
+            position: absolute;
+            top: 0;
+            right:40px;
             cursor: pointer;
             font-size: 24px;
         }
     </style>
 </head>
 <body>
-<div align="center" style="margin-top: 120px">
+<div align="center" style="margin-top: 150px">
     <form action="login" method="post">
         <div class="login-box">
             <form class="login-form">
                 <div class="hide-login-btn"><i class="fa fa-times" aria-hidden="true" onclick="javascript: window.location.href = 'getAllNews'"></i>
                 </div>
-                <h3 style="color: black; font-weight: bold">Welcome</h3>
-                <input class="txtb" type="text" name="username" placeholder="用户名">
-                <input class="txtb" type="password" name="password" placeholder="密码">
+                <h2 style="font-weight: bold">Welcome</h2>
+                <input class="input-style" type="text" name="username" placeholder="用户名">
+                <input class="input-style" type="password" name="password" placeholder="密码">
                 <input class="login-btn" type="submit" value="登录">
-                <p class="message" style="color: black">没有账户？<a href="add-author.jsp">注册</a></p>
-                <a class="message" style="color: red;">${loginMessage}</a>
+                <p style="color: black; font-size: 15px">没有账户？<a href="add-author.jsp">注册</a></p>
+                <p style="color: indianred;">${loginMessage}</p>
             </form>
         </div>
-
     </form>
 </div>
 
