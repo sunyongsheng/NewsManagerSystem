@@ -96,7 +96,7 @@
         }
     </script>
 </head>
-<body  onload="checkAuth()">
+<body  onload="checkAuth()" style="background:whitesmoke">
 <form align="right">
     <td>
         <input class="quit-button" type="button" value="退出" onclick="back()">

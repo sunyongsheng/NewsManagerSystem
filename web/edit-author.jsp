@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body style="background:whitesmoke">
 <div align="center" style="margin-top: 150px">
     <form action="saveAuthor" method="post" onsubmit="return canSave()">
         <div class="login-box">

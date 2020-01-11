@@ -174,7 +174,7 @@
         }
     </script>
 </head>
-<body  onload="checkAuth()">
+<body  onload="checkAuth()" style="background:whitesmoke">
 <div>
     <input type="button" class="quit-button" value="退出" onclick="back()">
 </div>
