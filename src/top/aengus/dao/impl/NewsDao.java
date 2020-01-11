@@ -257,6 +257,7 @@ public class NewsDao implements NewsInterface {
     public News getNewsByNewsId(int newsId, boolean addView) {
         connection = DBUtil.getConnection();
         String sql = "SELECT * FROM news WHERE news_id=?";
+        String sql2 = "SELECT author_name FROM author WHERE author_id=?";
         try {
             assert connection != null;
             preparedStatement = connection.prepareStatement(sql);
@@ -271,6 +272,15 @@ public class NewsDao implements NewsInterface {
             String keywords = resultSet.getString("keywords");
             String authorId = resultSet.getString("author_id");
             int viewCount = resultSet.getInt("view_count");
+
+            preparedStatement = connection.prepareStatement(sql2);
+            preparedStatement.setString(1, authorId);
+            resultSet = preparedStatement.executeQuery();
+            resultSet.next();
+            String authorName = "未知来源";
+            try {
+                authorName = resultSet.getString(1);
+            } catch (Exception ignore) {}
             if (addView) {
                 String addSql = "UPDATE news SET view_count=? WHERE news_id=?";
                 preparedStatement = connection.prepareStatement(addSql);
@@ -278,7 +288,7 @@ public class NewsDao implements NewsInterface {
                 preparedStatement.setInt(2, newsId);
                 preparedStatement.executeUpdate();
             }
-            return new News(newsId, newsTitle1, newsContent, newsPostDate, newsUpdateDate, keywords, authorId, newsCategory, viewCount+1);
+            return new News(newsId, newsTitle1, newsContent, newsPostDate, newsUpdateDate, keywords, authorName, newsCategory, viewCount+1);
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
