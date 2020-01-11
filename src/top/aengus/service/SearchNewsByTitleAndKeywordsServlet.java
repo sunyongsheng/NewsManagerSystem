@@ -25,6 +25,7 @@ public class SearchNewsByTitleAndKeywordsServlet extends HttpServlet {
         String queryText = request.getParameter("search_text");
         NewsInterface newsInterface = new NewsDao();
         List<News> searchRes = newsInterface.getNewsByNewsTitleAndKeywords(queryText);
+        request.setAttribute("searchText", queryText);
         request.setAttribute("newsList", searchRes);
         request.getRequestDispatcher("index.jsp").forward(request, response);
     }
