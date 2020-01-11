@@ -27,9 +27,9 @@ public class AddAuthorServlet extends HttpServlet {
         Author author = new Author(authorId, authorPassword, authorName);
         AdminInterface adminInterface = new AdminDao();
         if (adminInterface.addAuthor(author)) {
-            request.setAttribute("addAuthorMessage", "添加作者成功");
+            request.setAttribute("addAuthorMessage", "注册作者成功");
         } else {
-            request.setAttribute("addAuthorMessage", "添加作者失败");
+            request.setAttribute("addAuthorMessage", "注册作者失败");
         }
         if ((request.getSession().getAttribute("user") == null)
                 || (request.getSession().getAttribute("user").toString().equals("author"))) {
