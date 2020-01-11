@@ -17,7 +17,7 @@ import java.io.IOException;
  * @link https://www.aengus.top
  * @since 2020/1/10
  */
-@WebServlet("/edit")
+@WebServlet("/editNews")
 public class EditNewsServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("utf-8");
@@ -25,7 +25,7 @@ public class EditNewsServlet extends HttpServlet {
         NewsInterface newsInterface = new NewsDao();
         News news = newsInterface.getNewsByNewsId(newsId, false);
         request.setAttribute("news", news);
-        request.getRequestDispatcher("edit.jsp").forward(request, response);
+        request.getRequestDispatcher("edit-news.jsp").forward(request, response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

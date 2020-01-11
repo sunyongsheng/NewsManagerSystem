@@ -11,56 +11,32 @@
 <html>
 <head>
     <title>新闻编辑</title>
-    <style>
-        .edit-page {
-            width: 60%;
-            height: 100%;
-            background: rgba(,,, 1);
-
-        }
-
-        .shuxing {
-            vertical-align: top;
-            border: none;
-        }
-
-        .edit-content {
-            width: 500px;
-            height: 290px;
-        }
-
-        .bottom {
-            cursor: pointer;
-        }
-    </style>
+    <link rel="stylesheet" href="css/style.css">
 </head>
-<body style="background: #43506c">
+<body style="background: white">
 <form action="save" method="post">
-    <table class="edit-page" align="center">
+    <table class="edit-news-page" align="center">
         <tr>
             <td colspan="2" align="center">
-                <h3 align="center" style="font-size: 30px; font-weight: 500; color: white">新闻编辑</h3>
+                <h1 align="center" style="font-weight: bold;">新闻编辑</h1>
             </td>
         </tr>
 
         <tr>
-            <td class="shuxing" align="left">
+            <td class="news-category" align="left">
                 <input type="hidden" name="news_id" value="${news.newsId}">
-                <span style="color: white">新闻标题：</span><br>
-                <textarea style="border: none; height: 45px;width: 200px" name="news_title">${news.newsTitle}</textarea><br>
-                <span style="color: white">发布时间：</span><br>
-                <input style="border: none; width: 200px" type="date" name="news_post_date" value="${news.newsPostDate}"
-                       readonly><br>
-                <span style="color: white">更新时间：</span><br>
-                <input style="border: none; width: 200px" type="date" name="news_update_date"
-                       value="${news.newsUpdateDate}"><br>
-                <span style="color: white">关键词：</span><br>
-                <input style="border: none; width: 200px" type="text" name="keywords" value="${news.keywords}"><br>
-                <span style="color: white">阅读量：</span><br>
-                <input style="border: none; width: 200px" type="number" name="view_count" value="${news.viewCount}"
-                       readonly><br>
-                <span style="color: white">分类：</span><br>
-                <select name="news_category" style="width: 200px">
+                <span style="font-weight: bold">新闻标题：</span><br>
+                <input class="edit-news-input-style" name="news_title" value="${news.newsTitle}"><br>
+                <span style="font-weight: bold">发布时间：</span><br>
+                <input class="edit-news-input-style" type="date" name="news_post_date" value="${news.newsPostDate}" readonly><br>
+                <span style="font-weight: bold">更新时间：</span><br>
+                <input class="edit-news-input-style" type="date" name="news_update_date" value="${news.newsUpdateDate}"><br>
+                <span style="font-weight: bold">关键词：</span><br>
+                <input class="edit-news-input-style" type="text" name="keywords" value="${news.keywords}"><br>
+                <span style="font-weight: bold">阅读量：</span><br>
+                <input class="edit-news-input-style" type="number" name="view_count" value="${news.viewCount}" readonly><br>
+                <span style="font-weight: bold">分类：</span><br>
+                <select class="edit-news-input-style" name="news_category" style="width: 200px">
                     <c:if test="${news.newsCategory=='默认'}">
                     <option selected>默认</option>
                     <option>体育</option>
@@ -124,25 +100,20 @@
                     <option>文化</option>
                     <option selected>科技</option>
                     </c:if>
-                    <select>
-
+                </select>
                 <br>
             </td>
-            <td class="edit-content" align="left">
-                <textarea rows="30" cols="100" name="news_content"
-                          style="font-size:15px; color: black;left: 10%">${news.newsContent}</textarea>
+            <td align="left">
+                <textarea class="edit-news-content" name="news_content">${news.newsContent}</textarea>
             </td>
         </tr>
         <tr>
-        <td style="font-size:20px; color: black;" align="center" colspan="2"
-            style="background-color:#FFA500;text-align:center;">
-            <input class="bottom" type="submit" value="提交">
-            <input class="bottom" type="button" value="取消" onclick="javascript:location.href='getAllNews'">
-        </td>
+            <td align="center" colspan="2">
+                <input class="confirm-btn" type="submit" value="提交">
+                <input class="cancel-btn" type="button" value="取消" onclick="javascript:location.href='getAllNews'">
+            </td>
         </tr>
     </table>
 </form>
-
-
 </body>
 </html>
