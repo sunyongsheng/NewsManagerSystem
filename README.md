@@ -88,7 +88,7 @@
                 |- LoginServlet
                 |- SaveEditedNewsServlet
                 |- SaveEditedAuthorServlet
-                |- SearchNewsByTitleServlet
+                |- SearchNewsByTitleAndKeywordsServlet
                 |- ViewNewsSevrlet
             |- utils
                 |- DBUtil
