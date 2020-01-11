@@ -1,3 +1,7 @@
+# SQL文件在res文件夹中
+# 运行sql语句后内置管理员admin，密码123；内置读者author1，密码123
+# 首次运行请到src/top/aengus/utils/DBUtil中getConnection方法中更改用户名密码，默认root账号
+
 # 新闻管理系统
 
 利用基础JavaWeb知识，基础css语法，基础js方法构建的简单新闻管理系统；
