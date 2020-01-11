@@ -76,7 +76,7 @@
 </head>
 <body>
 <div align="center" style="margin-top: 150px">
-    <form action="addAuthor" method="post">
+    <form action="addAuthor" method="post" onclick="return canRegister()">
         <div class="login-box">
             <form class="login-form">
                 <div class="hide-login-btn"><i class="fa fa-times" aria-hidden="true" onclick="javascript: window.location.href = 'getAllNews'"></i>
@@ -131,14 +131,19 @@
 </div>
 </body>
 <script>
+    function canRegister() {
+        return checkIdCanUse()&&checkPasswordStrength()&&checkPasswordAgain();
+    }
 
     function checkPasswordStrength() {
         var password = document.getElementById("password");
         var passwordMsg = document.getElementById("password_msg");
         if (password.value.length <= 6) {
             passwordMsg.innerText = "长度必须大于6"
+            return false;
         } else {
             passwordMsg.innerText = null;
+            return true;
         }
     }
 
@@ -147,9 +152,11 @@
         var passwordAgain = document.getElementById("password_again");
         var passwordAgainMsg = document.getElementById("password_again_msg");
         if (password.value !== passwordAgain.value) {
-            passwordAgainMsg.innerText = "两次密码必须一致！"
+            passwordAgainMsg.innerText = "两次密码必须一致！";
+            return false;
         } else {
             passwordAgainMsg.innerText = null;
+            return true;
         }
     }
     function crateXml() {
@@ -173,10 +180,13 @@
         xmlHttp.onreadystatechange = function () {
             if (xmlHttp.readyState === 4 && xmlHttp.status === 200) {
                 msg.innerText = xmlHttp.responseText;
+                return false;
             } else {
                 msg.innerText = "此账号可用";
+                return true;
             }
-        }
+        };
+        return false;
     }
 </script>
 </html>
