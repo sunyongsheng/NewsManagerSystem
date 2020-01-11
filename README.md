@@ -95,7 +95,7 @@
 1. 打开浏览器
 2. 跳转到`GetAllNewsServlet`，发现无用户信息
 3. 跳转到index.jsp
-4. 点击搜索，跳转到`SearchNewsByTitleServlet`;
+4. 点击搜索，跳转到`SearchNewsByTitleAndKeywordsServlet`;
 5. 点击分类名称，跳转到`GetNewsByCategoryServlet`;
 6. 点击新闻，跳转到`ViewNewsServlet`;
 7. 点击登录，跳转到`LoginServlet`;
