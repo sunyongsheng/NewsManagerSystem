@@ -59,29 +59,22 @@
         }
 
         .news-top {
-            position: absolute;
-            top: 9%;
-            left: 30%;
-            right: 30%;
-
-
+            margin-top: 5%;
         }
 
-        .news-date {
-            position: absolute;
-            top: 19%;
-            left: 40%;
+        .news-content {
+            margin-top: 3%;
+            line-height: 2.2;
+            margin-bottom: 2em;
+            overflow-wrap: break-word;
+            word-wrap: break-word;
+            width: 60%;
+            border: none;
+            height: 100%;
         }
-
-        .news-body {
-            position: absolute;
-            top: 25%;
-            left: 20%;
-            right: 20%;
-            font-size: 1.2em;
-
+        .news-info {
+            margin-top: 3%;
         }
-
         * {
             margin: 0;
             padding: 0;
@@ -144,12 +137,8 @@
     </style>
 </head>
 <body class="body2">
-
-<div class="navbar">
-
+    <div class="navbar">
     <ul>
-
-
         <li>
             <a href="getNewsByCategory?category=教育">教育</a>
         </li>
@@ -179,16 +168,18 @@
             <i class="fa fa-search" aria-hidden="true"></i>
         </a>
     </div>
-</div>
-
-</body>
-<body>
-
-
-<div class="news-top"><h2>${news.newsTitle}</h2></div>
-<span class="news-date">${news.newsPostDate} | ${news.newsCategory} | ${news.authorId}</span>
-
-<div class="news-body">${news.newsContent}</div>
+    </div>
+    <div align="center">
+        <div class="news-top"><h2>${news.newsTitle}</h2></div>
+        <div class="news-info"><span style="font-weight: bold">发布时间：</span>${news.newsPostDate}&nbsp;&nbsp;|&nbsp;&nbsp;
+            <span style="font-weight: bold">分类：</span>${news.newsCategory}&nbsp;&nbsp;|&nbsp;&nbsp;
+            <span style="font-weight: bold">来源：</span>${news.authorId}</div>
+        <div>
+            <textarea readonly class="news-content">
+                ${news.newsContent}
+            </textarea>
+        </div>
+    </div>
 </body>
 <script>
     function getInputValue() {

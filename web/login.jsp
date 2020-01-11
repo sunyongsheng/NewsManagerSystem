@@ -90,7 +90,7 @@
                 <input class="input-style" type="text" name="username" placeholder="用户名">
                 <input class="input-style" type="password" name="password" placeholder="密码">
                 <input class="login-btn" type="submit" value="登录">
-                <p style="color: black; font-size: 15px">没有账户？<a href="add-author.jsp">注册</a></p>
+                <p style="color: black; font-size: 15px">没有账户？<a href="register-author.jsp">注册</a></p>
                 <p style="color: indianred;">${addAuthorMessage}</p>
                 <p style="color: indianred;">${loginMessage}</p>
             </form>

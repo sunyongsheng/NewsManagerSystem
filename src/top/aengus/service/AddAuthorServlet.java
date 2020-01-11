@@ -35,7 +35,7 @@ public class AddAuthorServlet extends HttpServlet {
                 || (request.getSession().getAttribute("user").toString().equals("author"))) {
             request.getRequestDispatcher("login.jsp").forward(request, response);
         } else if (request.getSession().getAttribute("user").toString().equals("admin")) {
-            request.getRequestDispatcher("admin.jsp").forward(request, response);
+            request.getRequestDispatcher("getAllNews").forward(request, response);
         }
     }
 

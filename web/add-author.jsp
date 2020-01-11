@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>作者注册</title>
+    <title>新增作者</title>
     <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css">
     <style>
         * {
@@ -52,9 +52,8 @@
             border-radius: 20px;
             text-align: center;
         }
-
         .login-btn {
-            width: 150px;
+            width: 5em;
             background: #0099CC;
             border: 0;
             color: white;
@@ -64,13 +63,16 @@
             margin-top: 5px;
             margin-bottom: 10px;
         }
-
-        .hide-login-btn {
-            color: black;
-            position: absolute;
-            right:40px;
+        .cancel-btn {
+            width: 5em;
+            background: #FF0033;
+            border: 0;
+            color: white;
+            padding: 8px 10px;
+            border-radius: 20px;
             cursor: pointer;
-            font-size: 24px;
+            margin-top: 5px;
+            margin-bottom: 10px;
         }
     </style>
 </head>
@@ -79,9 +81,7 @@
     <form action="addAuthor" method="post" onsubmit="return canRegister()">
         <div class="login-box">
             <form class="login-form">
-                <div class="hide-login-btn"><i class="fa fa-times" aria-hidden="true" onclick="javascript: window.location.href = 'getAllNews'"></i>
-                </div>
-                <h1 style="font-weight: bold">Welcome</h1>
+                <h1 style="font-weight: bold">新增读者</h1>
                 <table border="0" style="position: relative;left: 4%">
                     <tr>
                         <td>
@@ -114,17 +114,12 @@
                         </td>
                     </tr>
                     <tr>
-                        <td colspan="2" style="position: relative;left: 13%">
-                            <input class="login-btn" type="submit" value="注册">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="2" style="position: relative;left: 18%">
-                            <p style="color: black; font-size: 15px">已有账户？<a href="login.jsp">登录</a></p>
+                        <td style="position: relative;left: 13%">
+                            <input class="login-btn" type="submit" value="新增">
+                            <input class="cancel-btn" type="button" value="取消" onclick="javascript: window.location.href='getAllNews'">
                         </td>
                     </tr>
                 </table>
-
             </form>
         </div>
     </form>
@@ -180,13 +175,12 @@
         xmlHttp.onreadystatechange = function () {
             if (xmlHttp.readyState === 4 && xmlHttp.status === 200) {
                 msg.innerText = xmlHttp.responseText;
-                return false;
+                return xmlHttp.responseText === "此账号可用";
             } else {
                 msg.innerText = "此账号可用";
                 return true;
             }
         };
-        return false;
     }
 </script>
 </html>

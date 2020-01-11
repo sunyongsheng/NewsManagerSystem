@@ -29,7 +29,7 @@ public class ExistIdServlet extends HttpServlet {
         if (!authorInterface.authorIdAvailable(authorId)) {
             response.getWriter().print("用户名已被占用");
         } else {
-            response.getWriter().print("用户名可用");
+            response.getWriter().print("此账号可用");
         }
     }
 }
