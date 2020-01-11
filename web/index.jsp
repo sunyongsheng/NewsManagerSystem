@@ -154,7 +154,7 @@
 <div style="background-color: #f1f1f1;" align="center">
     <ul id="menu">
         <li>
-            <a href="#">全部</a>
+            <a href="#">首页</a>
         </li>
         <li>
             <a href="getNewsByCategory?category=体育">体育</a>
