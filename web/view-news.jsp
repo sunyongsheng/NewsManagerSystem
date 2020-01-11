@@ -16,7 +16,7 @@
             top: 1.2%;
             left: 5%;
             transform: translate(-50, -50);
-            background: #666666;
+            background: #3aafa9;
             height: 30px;
             border-radius: 30px;
             padding: 5px;
@@ -29,7 +29,7 @@
         }
 
         .search-box:hover > .search-btn {
-            background: #666;
+            background: #3aafa9;
         }
 
         .search-btn {
@@ -38,7 +38,7 @@
             width: 30px;
             height: 30px;
             border-radius: 50%;
-            background: #666;
+            background: #3aafa9;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -63,6 +63,7 @@
         }
 
         .news-content {
+            background: #fff;
             margin-top: 3%;
             line-height: 2.2;
             margin-bottom: 2em;
@@ -80,16 +81,12 @@
             padding: 0;
         }
 
-        .body2 {
-            margin: 0;
-            padding: 0;
-            font-family: sans-serif;
-        }
+
 
         .navbar {
             width: 100%;
             height: 50px;
-            background: #666;
+            background: #3aafa9;
             box-shadow: 0 -2px 2px #0099CC;
         }
 
@@ -101,19 +98,19 @@
             float: right;
             width: 150px;
             height: 50px;
-            background: #666;
+            background: #3aafa9;
             margin-right: 1px;
             font-size: 14px;
         }
 
         .navbar ul li:hover {
-            color: whitesmoke;
-            background: #fff;
+            color: #2a7b78;
+            background: #2a7b78;
         }
 
         .navbar ul li a {
             text-decoration: none;
-            color: #0099CC;
+            color: white;
             display: block;
             text-align: center;
             line-height: 50px;
@@ -132,11 +129,11 @@
 
         .navbar ul li:hover ul li {
             display: block;
-            border-top: 1px solid rgba(0, 119, 0, 0.5);
+            border-top: 1px solid rgba(0, 119, 100, 0.5);
         }
     </style>
 </head>
-<body class="body2">
+<body style="background:#fff">
     <div class="navbar">
     <ul>
         <li>

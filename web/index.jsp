@@ -31,7 +31,7 @@
           #menu li a {
               text-decoration: none;
               position: relative;
-              color: black;
+              color: white;
               font-size: 20px;
               font-weight: 700;
               font-family: sans-serif;
