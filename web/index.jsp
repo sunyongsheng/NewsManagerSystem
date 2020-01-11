@@ -19,13 +19,15 @@
     <title>新闻首页</title>
       <style>
           #menu {
-              margin: 0;
+              margin: 0%;
               padding: 0;
+              background: #3aafa9;
           }
 
           #menu li {
               list-style: none;
               display: inline-block;
+              background: #3aafa9;
           }
 
           #menu li a {
@@ -46,25 +48,26 @@
               content: '';
               width: 25px;
               position: absolute;
-              border-bottom: 6px solid #000000;
+              border-bottom: 6px solid #2a7b78;
               bottom: 0px;
               right: 150px;
               transition: 0.7s all;
           }
 
           #menu li a:hover:before {
-              right: 50%;
+              right: 27%;
           }
 
           body {
               margin: 0;
               padding: 0;
-              background: white;
+              background: whitesmoke;
+
           }
 
           .search-box {
               position: absolute;
-              top: 11.5%;
+              top: 22.5%;
               left: 80%;
               transform: translate(-50, -50);
               background: #ffffff;
@@ -113,6 +116,7 @@
               color: black;
               border: 2px solid;
           }
+
           .login-page {
               position: absolute;
               top: 5%;
@@ -121,11 +125,12 @@
               padding: 1px;
               cursor: pointer;
               font-size: 0.8em;
-              color: #666;
+              color: #5e5e5e;
           }
           .news-form {
               width: 60%;
           }
+
 
           #news-page td {
               height: 3em;
@@ -136,46 +141,62 @@
               overflow: hidden;
               transition: 0.7s all;
           }
+
+          .sm-location {
+              top: 20%;
+          }
       </style>
   </head>
 
 <body>
-<div style="margin-top: 5%" align="right">
-    <div class="login-page" onclick="javascript:location.href='login.jsp'">
-        <i class="fa fa-sign-in" aria-hidden="true"></i> 登录/注册
+<div>
+    <div class="title"><img style="width: 1535px;height:160px" src="assets/title.jpg">
+        <div style="margin-top: 0%" align="right">
+            <div class="login-page" onclick="javascript:location.href='login.jsp'">
+
+                <i class="fa fa-sign-in" aria-hidden="true"></i> 登录/注册
+            </div>
+        </div>
     </div>
 </div>
-<div class="search-box">
-    <input class="search-txt" type="text" id="search_title" placeholder="输入搜索内容" onchange="getInputValue()">
-    <a class="search-btn" href="" id="press_to_search">
-        <i class="fa fa-search" aria-hidden="true"></i>
-    </a>
+<div>
+    <div class="sm-location">
+        <div class="search-box">
+            <input class="search-txt" type="text" id="search_title" placeholder="输入搜索内容" onchange="getInputValue()">
+            <a class="search-btn" href="" id="press_to_search">
+                <i class="fa fa-search" aria-hidden="true"></i>
+            </a>
+        </div>
+        <div style="background-color: black;" align="center">
+
+            <ul id="menu">
+                <li>
+                    <a href="getAllNews">首页</a>
+                </li>
+                <li>
+                    <a href="getNewsByCategory?category=体育">体育</a>
+                </li>
+                <li>
+                    <a href="getNewsByCategory?category=财经">财经</a>
+                </li>
+                <li>
+                    <a href="getNewsByCategory?category=时政">时政</a>
+                </li>
+                <li>
+                    <a href="getNewsByCategory?category=教育">教育</a>
+                </li>
+                <li>
+                    <a href="getNewsByCategory?category=文化">文化</a>
+                </li>
+                <li>
+                    <a href="getNewsByCategory?category=科技">科技</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
 </div>
-<div style="background-color: #f1f1f1;" align="center">
-    <ul id="menu">
-        <li>
-            <a href="getAllNews">首页</a>
-        </li>
-        <li>
-            <a href="getNewsByCategory?category=体育">体育</a>
-        </li>
-        <li>
-            <a href="getNewsByCategory?category=财经">财经</a>
-        </li>
-        <li>
-            <a href="getNewsByCategory?category=时政">时政</a>
-        </li>
-        <li>
-            <a href="getNewsByCategory?category=教育">教育</a>
-        </li>
-        <li>
-            <a href="getNewsByCategory?category=文化">文化</a>
-        </li>
-        <li>
-            <a href="getNewsByCategory?category=科技">科技</a>
-        </li>
-    </ul>
-</div>
+
 <div align="center">
     <div>
         <table class="news-form">
@@ -195,7 +216,7 @@
     function getInputValue() {
         var inputValue = document.getElementById("search_title").value;
         var searchPress = document.getElementById("press_to_search");
-        searchPress.href = "searchNewsByTitle?search_title=" + inputValue;
+        searchPress.href = "searchNewsByTitleAndKeywords?search_text=" + inputValue;
     }
 </script>
 </html>
