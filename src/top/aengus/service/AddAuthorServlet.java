@@ -31,10 +31,10 @@ public class AddAuthorServlet extends HttpServlet {
             request.setAttribute("addAuthorMessage", "添加作者失败");
         }
         if ((request.getSession().getAttribute("user") == null)
-                || (request.getSession().getAttribute("user").toString().equals("admin"))) {
-            request.getRequestDispatcher("getAllNews").forward(request, response);
-        } else {
+                || (request.getSession().getAttribute("user").toString().equals("author"))) {
             request.getRequestDispatcher("login.jsp").forward(request, response);
+        } else if (request.getSession().getAttribute("user").toString().equals("admin")) {
+            request.getRequestDispatcher("admin.jsp").forward(request, response);
         }
     }
 
