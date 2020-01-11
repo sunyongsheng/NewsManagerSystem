@@ -11,7 +11,7 @@
     <title>新闻详情</title>
     <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css">
     <style>
-        .search-box {
+        .index-search-box {
             position: absolute;
             top: 1.2%;
             left: 5%;
@@ -23,16 +23,16 @@
 
         }
 
-        .search-box:hover > .search-txt {
+        .index-search-box:hover > .index-search-txt {
             width: 190px;
             padding: 0 25px;
         }
 
-        .search-box:hover > .search-btn {
+        .index-search-box:hover > .index-search-btn {
             background: #666;
         }
 
-        .search-btn {
+        .index-search-btn {
             color: white;
             float: left;
             width: 30px;
@@ -45,7 +45,7 @@
             transition: 0.4s;
         }
 
-        .search-txt {
+        .index-search-txt {
             border: none;
             background: white;
             outline: none;
