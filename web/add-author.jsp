@@ -124,7 +124,6 @@
                         </td>
                     </tr>
                 </table>
-
             </form>
         </div>
     </form>
@@ -180,13 +179,12 @@
         xmlHttp.onreadystatechange = function () {
             if (xmlHttp.readyState === 4 && xmlHttp.status === 200) {
                 msg.innerText = xmlHttp.responseText;
-                return false;
+                return xmlHttp.responseText === "此账号可用";
             } else {
                 msg.innerText = "此账号可用";
                 return true;
             }
         };
-        return false;
     }
 </script>
 </html>
