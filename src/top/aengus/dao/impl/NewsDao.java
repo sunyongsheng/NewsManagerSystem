@@ -280,7 +280,16 @@ public class NewsDao implements NewsInterface {
             String authorName = "未知来源";
             try {
                 authorName = resultSet.getString(1);
-            } catch (Exception ignore) {}
+            } catch (Exception e) {
+                String sql3 = "SELECT admin_name FROM administrator WHERE admin_id=?";
+                preparedStatement = connection.prepareStatement(sql3);
+                preparedStatement.setString(1, authorId);
+                resultSet = preparedStatement.executeQuery();
+                resultSet.next();
+                try {
+                    authorName = resultSet.getString(1);
+                } catch (Exception ignore) {}
+            }
             if (addView) {
                 String addSql = "UPDATE news SET view_count=? WHERE news_id=?";
                 preparedStatement = connection.prepareStatement(addSql);
