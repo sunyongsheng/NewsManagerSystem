@@ -46,7 +46,7 @@
     </div>
     </div>
     <div align="center">
-        <div class="view-news-top"><h2>${news.newsTitle}</h2></div>
+        <div class="view-news-top"><h1>${news.newsTitle}</h1></div>
         <div class="view-news-info"><span style="font-weight: bold">发布时间：</span>${news.newsPostDate}&nbsp;&nbsp;|&nbsp;&nbsp;
             <span style="font-weight: bold">分类：</span>${news.newsCategory}&nbsp;&nbsp;|&nbsp;&nbsp;
             <span style="font-weight: bold">来源：</span>${news.authorId}</div>
