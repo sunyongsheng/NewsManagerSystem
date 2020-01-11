@@ -76,7 +76,7 @@
 </head>
 <body>
 <div align="center" style="margin-top: 150px">
-    <form action="addAuthor" method="post" onclick="return canRegister()">
+    <form action="addAuthor" method="post" onsubmit="return canRegister()">
         <div class="login-box">
             <form class="login-form">
                 <div class="hide-login-btn"><i class="fa fa-times" aria-hidden="true" onclick="javascript: window.location.href = 'getAllNews'"></i>
