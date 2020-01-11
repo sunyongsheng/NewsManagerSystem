@@ -66,14 +66,18 @@ public class AdminDao implements AdminInterface {
     public boolean addAuthor(Author author) {
         try {
             connection = DBUtil.getConnection();
-            String sql = "INSERT INTO author(author_id,author_password,author_name)VALUES (?,?,?)";
             assert connection != null;
+            String sqlQuery = "SELECT * FROM administrator WHERE admin_id=?";
+            preparedStatement = connection.prepareStatement(sqlQuery);
+            preparedStatement.setString(1, author.getAuthorId());
+            resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) return false;
+            String sql = "INSERT INTO author(author_id,author_password,author_name)VALUES (?,?,?)";
             preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1, author.getAuthorId());
             preparedStatement.setString(2, author.getAuthorPassword());
             preparedStatement.setString(3, author.getAuthorName());
             return preparedStatement.executeUpdate() == 1;
-
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
