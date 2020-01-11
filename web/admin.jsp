@@ -11,7 +11,7 @@
 <head>
     <title>管理员界面</title>
 </head>
-<body>
+<body  onload="checkAuth()">
 <form align="right">
     <td>
         <input type="button" value="退出" onclick="back()">
@@ -206,6 +206,13 @@
                 }
             }
             chkall.checked = isAll;
+        }
+    }
+    // 检查权限
+    function checkAuth() {
+        if ("${user}" !== "admin") {
+            alert("请先登录");
+            location.href = "login.jsp";
         }
     }
 </script>

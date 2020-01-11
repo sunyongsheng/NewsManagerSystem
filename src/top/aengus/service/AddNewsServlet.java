@@ -22,6 +22,10 @@ import java.sql.Date;
 public class AddNewsServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("utf-8");
+        if (request.getSession().getAttribute("user") == null) {
+            response.sendRedirect("login.jsp");
+            return;
+        }
         String newsTitle = request.getParameter("news_title");
         String newsContent = request.getParameter("news_content");
         Date newsPostDate = Date.valueOf(request.getParameter("news_post_date"));

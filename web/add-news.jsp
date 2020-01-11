@@ -11,7 +11,7 @@
 <head>
     <title>新增新闻</title>
 </head>
-<body>
+<body  onload="checkAuth()">
 <form action="addNews" method="post">
     <table width="500" border="0" align="center">
         <tr>
@@ -46,7 +46,14 @@
         </td>
     </table>
 </form>
-
-
 </body>
+<script>
+    // 检查权限
+    function checkAuth() {
+        if ("${user}" !== "admin" || "${user}" !== "author") {
+            alert("请先登录");
+            location.href = "login.jsp";
+        }
+    }
+</script>
 </html>
