@@ -139,7 +139,7 @@
         var password = document.getElementById("password");
         var passwordMsg = document.getElementById("password_msg");
         if (password.value.length <= 6) {
-            passwordMsg.innerText = "长度必须大于6"
+            passwordMsg.innerText = "长度必须大于6";
             return false;
         } else {
             passwordMsg.innerText = null;
