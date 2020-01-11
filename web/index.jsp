@@ -64,19 +64,19 @@
 
           .search-box {
               position: absolute;
-              top: 9%;
+              top: 11.5%;
               left: 80%;
               transform: translate(-50, -50);
               background: #ffffff;
-              height: 35px;
-              border-radius: 35px;
+              height: 2em;
+              border-radius: 2em;
               padding: 10px;
 
           }
 
           .search-box:hover > .search-txt {
-              width: 190px;
-              padding: 0 25px;
+              width: 11em;
+              padding: 0 1.2em;
           }
 
           .search-box:hover > .search-btn {
@@ -86,8 +86,8 @@
           .search-btn {
               color: black;
               float: left;
-              width: 40px;
-              height: 40px;
+              width: 2em;
+              height: 2em;
               border-radius: 50%;
               background: #ffffff;
               display: flex;
@@ -102,10 +102,10 @@
               outline: none;
               float: left;
               padding: 0;
-              color: white;
-              font-size: 16px;
+              color: black;
+              font-size: 1em;
               transition: 0.4s;
-              line-height: 20px;
+              line-height: 1em;
               width: 0px;
           }
 
@@ -113,107 +113,80 @@
               color: black;
               border: 2px solid;
           }
-
-
           .login-page {
               position: absolute;
               top: 5%;
               right: 0%;
               transform: translate(-50%, -50%);
-
-
               padding: 1px;
               cursor: pointer;
-              font-size: 5px;
+              font-size: 0.8em;
               color: #666;
           }
-
           .news-form {
-              position: absolute;
-              top: 20%;
-              width: 70%;
-              justify-content: center;
-
+              width: 60%;
           }
 
           #news-page td {
+              height: 3em;
               text-decoration: none;
-              position: relative;
               color: black;
-              font-size: 20px;
-              font-weight: 550px;
+              font-size: 1em;
               font-family: sans-serif;
               overflow: hidden;
               transition: 0.7s all;
-              padding: 10px 50px;
-              content: '';
-              border-bottom: 4px solid #666;
           }
-
       </style>
   </head>
 
 <body>
-  <form align="right">
-      <div>
-          <div class="login-page" onclick="javascript:location.href='login.jsp'">
-              <i class="fa fa-sign-in" aria-hidden="true"></i> 登录/注册
-          </div>
-
-      </div>
-  </form >
-
-  <h1 align="center">新闻管理系统</h1>
-  <div class="search-box">
-      <input class="search-txt" type="text" id="search_title" placeholder="输入搜索内容" onchange="getInputValue()">
-      <a class="search-btn" href="" id="press_to_search">
-          <i class="fa fa-search" aria-hidden="true"></i>
-      </a>
-  </div>
-  <form>
-      <div style="margin: 0;padding: 0;background-color: #f1f1f1;" align="center">
-          <ul id="menu">
-              <ul>
-                  <li>
-                      <a href="#">全部</a>
-                  </li>
-                  <li>
-                      <a href="getNewsByCategory?category=体育">体育</a>
-                  </li>
-                  <li>
-                      <a href="getNewsByCategory?category=财经">财经</a>
-                  </li>
-                  <li>
-                      <a href="getNewsByCategory?category=时政">时政</a>
-                  </li>
-                  <li>
-                      <a href="getNewsByCategory?category=教育">教育</a>
-                  </li>
-                  <li>
-                      <a href="getNewsByCategory?category=文化">文化</a>
-                  </li>
-                  <li>
-                      <a href="getNewsByCategory?category=科技">科技</a>
-                  </li>
-              </ul>
-          </ul>
-
-      </div>
-  </form>
-<div>
-    <div class="news-form">
-        <table>
-
-            <tr class="news-form">
-                <c:forEach items="${newsList}" var="news">
-            <tr id="news-page">
-                    <td>${news.newsCategory}</td>
-                    <td><a href="viewNews?news_id=${news.newsId}">${news.newsTitle}<a></a></td>
-                    <td>${news.newsPostDate}</td>
-                <td>浏览量:${news.viewCount}</td>
+<div style="margin-top: 5%" align="right">
+    <div class="login-page" onclick="javascript:location.href='login.jsp'">
+        <i class="fa fa-sign-in" aria-hidden="true"></i> 登录/注册
+    </div>
+</div>
+<div class="search-box">
+    <input class="search-txt" type="text" id="search_title" placeholder="输入搜索内容" onchange="getInputValue()">
+    <a class="search-btn" href="" id="press_to_search">
+        <i class="fa fa-search" aria-hidden="true"></i>
+    </a>
+</div>
+<div style="background-color: #f1f1f1;" align="center">
+    <ul id="menu">
+        <li>
+            <a href="#">全部</a>
+        </li>
+        <li>
+            <a href="getNewsByCategory?category=体育">体育</a>
+        </li>
+        <li>
+            <a href="getNewsByCategory?category=财经">财经</a>
+        </li>
+        <li>
+            <a href="getNewsByCategory?category=时政">时政</a>
+        </li>
+        <li>
+            <a href="getNewsByCategory?category=教育">教育</a>
+        </li>
+        <li>
+            <a href="getNewsByCategory?category=文化">文化</a>
+        </li>
+        <li>
+            <a href="getNewsByCategory?category=科技">科技</a>
+        </li>
+    </ul>
+</div>
+<div align="center">
+    <div>
+        <table class="news-form">
+            <c:forEach items="${newsList}" var="news">
+                <tr id="news-page">
+                    <td align="center">${news.newsCategory}</td>
+                    <td align="center"><a href="viewNews?news_id=${news.newsId}">${news.newsTitle}<a></a></td>
+                    <td align="center">${news.newsPostDate}</td>
+                    <td align="center">浏览量:${news.viewCount}</td>
                 </tr>
             </c:forEach>
-            </tr>
         </table>
         </div>
     </div>
