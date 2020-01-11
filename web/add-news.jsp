@@ -50,7 +50,7 @@
 <script>
     // 检查权限
     function checkAuth() {
-        if ("${user}" !== "admin" || "${user}" !== "author") {
+        if ("${user}" !== "admin" && "${user}" !== "author") {
             alert("请先登录");
             location.href = "login.jsp";
         }
