@@ -28,18 +28,23 @@ public class AddNewsServlet extends HttpServlet {
         }
         String newsTitle = request.getParameter("news_title");
         String newsContent = request.getParameter("news_content");
-        Date newsPostDate = Date.valueOf(request.getParameter("news_post_date"));
-        String keywords = request.getParameter("keywords");
-        String authorId = request.getSession().getAttribute("userMessage").toString();
-        String category = request.getParameter("news_category");
-        News news = new News(newsTitle, newsContent, newsPostDate, keywords, authorId, category);
-        NewsInterface newsInterface = new NewsDao();
-        if (newsInterface.addNews(authorId, news)) {
-            request.setAttribute("addNewsMessage", "添加成功");
-        } else {
-            request.setAttribute("addNewsMessage", "添加失败");
+        try {
+            Date newsPostDate = Date.valueOf(request.getParameter("news_post_date"));
+            String keywords = request.getParameter("keywords");
+            String authorId = request.getSession().getAttribute("userMessage").toString();
+            String category = request.getParameter("news_category");
+            News news = new News(newsTitle, newsContent, newsPostDate, keywords, authorId, category);
+            NewsInterface newsInterface = new NewsDao();
+            if (newsInterface.addNews(authorId, news)) {
+                request.setAttribute("addNewsMessage", "添加成功");
+            } else {
+                request.setAttribute("addNewsMessage", "添加失败");
+            }
+            request.getRequestDispatcher("getAllNews").forward(request, response);
+        } catch (Exception e) {
+            request.setAttribute("addNewsMessage", "添加失败，未指定发布日期");
+            request.getRequestDispatcher("getAllNews").forward(request, response);
         }
-        request.getRequestDispatcher("getAllNews").forward(request, response);
 
     }
 
