@@ -15,4 +15,5 @@ public interface AuthorInterface {
     boolean authorIdAvailable(String authorId);
     List<Author> getAllAuthor();
     boolean authorUpdate(String authorId, Author author);
+    Author getAuthorByAuthorId(String authorId);
 }
