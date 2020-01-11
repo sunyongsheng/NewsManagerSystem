@@ -202,7 +202,7 @@
         <c:forEach items="${newsList}" var="news">
             <tr class="table-row">
                 <td align="center"><input type="checkbox" value="${news.newsId}" name="chk" onclick="unCheck(this)"></td>
-                <td align="center">${news.newsTitle}</td>
+                <td align="center"><a class="no-baseline-href" href="viewNews?news_id=${news.newsId}">${news.newsTitle}</a></td>
                 <td align="center">${news.newsPostDate}</td>
                 <td align="center">${news.newsUpdateDate}</td>
             </tr>
