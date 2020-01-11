@@ -52,7 +52,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td colspan="2" style="position: relative;left: 13%">
+                        <td colspan="2" style="position: relative;left: 23%">
                             <input class="confirm-btn" type="submit" value="注册">
                         </td>
                     </tr>
@@ -117,6 +117,10 @@
         xmlHttp.onreadystatechange = function () {
             if (xmlHttp.readyState === 4 && xmlHttp.status === 200) {
                 msg.innerText = xmlHttp.responseText;
+                if (name.length < 1) {
+                    msg.innerText = "请输入账号";
+                    return false;
+                }
                 return xmlHttp.responseText === "此账号可用";
             } else {
                 msg.innerText = "此账号可用";

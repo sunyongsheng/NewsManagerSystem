@@ -1,3 +1,10 @@
+*{
+    font-family: "Microsoft YaHei UI", serif;
+}
+
+.small-hint-text {
+    font-size: 0.7em;
+}
 .confirm-btn {
     width: 5em;
     background: #0099CC;
@@ -81,10 +88,6 @@
     right:40px;
     cursor: pointer;
     font-size: 24px;
-}
-
-*{
-    font-family: "Microsoft YaHei UI", serif;
 }
 
 .add-news-button {
