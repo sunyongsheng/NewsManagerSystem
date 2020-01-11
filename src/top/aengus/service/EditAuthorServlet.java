@@ -1,5 +1,9 @@
 package top.aengus.service;
 
+import top.aengus.dao.impl.AuthorDao;
+import top.aengus.dao.interfaces.AuthorInterface;
+import top.aengus.pojo.Author;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -17,7 +21,11 @@ import java.io.IOException;
 public class EditAuthorServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("utf-8");
-
+        String authorId = request.getParameter("author_id");
+        AuthorInterface authorInterface = new AuthorDao();
+        Author author = authorInterface.getAuthorByAuthorId(authorId);
+        request.setAttribute("author", author);
+        request.getRequestDispatcher("edit-author.jsp").forward(request, response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
