@@ -102,7 +102,7 @@
         <input class="quit-button" type="button" value="退出" onclick="back()">
     </td>
 </form>
-<div align="center" style="margin-top: 60px">
+<div align="center" style="margin-top: 3em">
     <h1>欢迎${userMessage}使用新闻管理系统</h1>
     <input class="add-news-button" type="button" value="新增" onclick="addNews()">
     <input class="edit-news-button" type="button" value="编辑" onclick="editNews()">

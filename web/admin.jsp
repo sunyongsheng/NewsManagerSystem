@@ -178,7 +178,7 @@
 <div>
     <input type="button" class="quit-button" value="退出" onclick="back()">
 </div>
-<div align="center">
+<div align="center" style="margin-top: 3em">
     <h1>欢迎${userMessage}使用新闻管理系统</h1>
 </div>
 <div align="center"  style="margin-top: 20px">
