@@ -18,13 +18,13 @@ import java.util.List;
  * @link https://www.aengus.top
  * @since 2020/1/10
  */
-@WebServlet("/searchNewsByTitle")
-public class SearchNewsByTitleServlet extends HttpServlet {
+@WebServlet("/searchNewsByTitleAndKeywords")
+public class SearchNewsByTitleAndKeywordsServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("utf-8");
-        String queryText = request.getParameter("search_title");
+        String queryText = request.getParameter("search_text");
         NewsInterface newsInterface = new NewsDao();
-        List<News> searchRes = newsInterface.getNewsByNewsTitle(queryText);
+        List<News> searchRes = newsInterface.getNewsByNewsTitleAndKeywords(queryText);
         request.setAttribute("newsList", searchRes);
         request.getRequestDispatcher("index.jsp").forward(request, response);
     }

@@ -203,17 +203,38 @@ public class NewsDao implements NewsInterface {
     }
 
     @Override
-    public List<News> getNewsByNewsTitle(String newsTitle) {
+    public List<News> getNewsByNewsTitleAndKeywords(String queryText) {
         List<News> list = new ArrayList<>();
+        List<Integer> idList = new ArrayList<>();
         connection = DBUtil.getConnection();
         try {
             String sql = "SELECT * FROM news WHERE news_title LIKE ?;";
+            String sql2 = "SELECT * FROM news WHERE keywords LIKE ?";
             assert connection != null;
             preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setString(1, "%"+newsTitle+"%");
+            preparedStatement.setString(1, "%"+queryText+"%");
             resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 int newsId = resultSet.getInt("news_id");
+                String newsTitle1 = resultSet.getString("news_title");
+                String newsContent = resultSet.getString("news_content");
+                Date newsPostDate = resultSet.getDate("news_post_date");
+                Date newsUpdateDate = resultSet.getDate("news_update_date");
+                String newsCategory = resultSet.getString("news_category");
+                String keywords = resultSet.getString("keywords");
+                String authorId = resultSet.getString("author_id");
+                int viewCount = resultSet.getInt("view_count");
+                idList.add(newsId);
+                list.add(new News(newsId, newsTitle1, newsContent, newsPostDate, newsUpdateDate, keywords, authorId, newsCategory, viewCount));
+            }
+            preparedStatement = connection.prepareStatement(sql2);
+            preparedStatement.setString(1, "%"+queryText+"%");
+            resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                int newsId = resultSet.getInt("news_id");
+                if (idList.contains(newsId)) {
+                    continue;
+                }
                 String newsTitle1 = resultSet.getString("news_title");
                 String newsContent = resultSet.getString("news_content");
                 Date newsPostDate = resultSet.getDate("news_post_date");

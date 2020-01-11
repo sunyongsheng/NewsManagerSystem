@@ -61,7 +61,7 @@
     function getInputValue() {
         var inputValue = document.getElementById("search_title").value;
         var searchPress = document.getElementById("press_to_search");
-        searchPress.href = "searchNewsByTitle?search_title=" + inputValue;
+        searchPress.href = "searchNewsByTitleAndKeywords?search_text=" + inputValue;
     }
 </script>
 </html>

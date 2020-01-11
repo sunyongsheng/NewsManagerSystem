@@ -64,6 +64,6 @@ public interface NewsInterface {
      */
     int editNewsByNewsId(String adminId, String authorId, News latestNews);
 
-    List<News> getNewsByNewsTitle(String newsTitle);
+    List<News> getNewsByNewsTitleAndKeywords(String newsTitle);
     News getNewsByNewsId(int newsId, boolean addView);
 }
