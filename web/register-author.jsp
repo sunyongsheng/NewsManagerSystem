@@ -2,13 +2,13 @@
   Created by IntelliJ IDEA.
   User: aengus
   Date: 2020/1/11
-  Time: 13:53
+  Time: 15:05
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>编辑作者</title>
+    <title>作者注册</title>
     <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css">
     <style>
         * {
@@ -54,7 +54,7 @@
         }
 
         .login-btn {
-            width: 5em;
+            width: 150px;
             background: #0099CC;
             border: 0;
             color: white;
@@ -64,35 +64,34 @@
             margin-top: 5px;
             margin-bottom: 10px;
         }
-        .cancel-btn {
-            width: 5em;
-            background: #FF0033;
-            border: 0;
-            color: white;
-            padding: 8px 10px;
-            border-radius: 20px;
+
+        .hide-login-btn {
+            color: black;
+            position: absolute;
+            right:40px;
             cursor: pointer;
-            margin-top: 5px;
-            margin-bottom: 10px;
+            font-size: 24px;
         }
     </style>
 </head>
 <body>
 <div align="center" style="margin-top: 150px">
-    <form action="saveAuthor" method="post" onsubmit="return canSave()">
+    <form action="addAuthor" method="post" onsubmit="return canRegister()">
         <div class="login-box">
             <form class="login-form">
-                <h1 style="font-weight: bold">修改信息</h1>
+                <div class="hide-login-btn"><i class="fa fa-times" aria-hidden="true" onclick="javascript: window.location.href = 'getAllNews'"></i>
+                </div>
+                <h1 style="font-weight: bold">Welcome</h1>
                 <table border="0" style="position: relative;left: 4%">
                     <tr>
                         <td>
-                            <input class="input-style" type="text" name="author_id" id="author_id" placeholder="用户名" value="${author.authorId}" readonly>
+                            <input class="input-style" type="text" name="author_id" id="author_id" placeholder="用户名" onblur="checkIdCanUse()">
                         </td>
                         <td><p id="author_id_msg" style="color: indianred; width: 120px; font-size: 13px"></p></td>
                     </tr>
                     <tr>
                         <td>
-                            <input class="input-style" type="password" name="author_password" id="password" placeholder="密码" value="${author.authorPassword}" onblur="checkPasswordStrength()">
+                            <input class="input-style" type="password" name="author_password" id="password" placeholder="密码" onblur="checkPasswordStrength()">
                         </td>
                         <td>
                             <p id="password_msg" style="color: indianred; width: 120px; font-size: 13px"></p>
@@ -100,7 +99,7 @@
                     </tr>
                     <tr>
                         <td>
-                            <input class="input-style" type="password" name="password_again" id="password_again" placeholder="确认密码" value="${author.authorPassword}" onblur="checkPasswordAgain()">
+                            <input class="input-style" type="password" name="password_again" id="password_again" placeholder="确认密码" onblur="checkPasswordAgain()">
                         </td>
                         <td>
                             <p id="password_again_msg" style="color: indianred; width: 120px; font-size: 13px"></p>
@@ -108,16 +107,20 @@
                     </tr>
                     <tr>
                         <td>
-                            <input class="input-style" type="text" name="author_name" value="${author.authorName}" placeholder="姓名">
+                            <input class="input-style" type="text" name="author_name" placeholder="姓名">
                         </td>
                         <td>
 
                         </td>
                     </tr>
                     <tr>
-                        <td style="position: relative;left: 13%">
-                            <input class="login-btn" type="submit" value="保存">
-                            <input class="cancel-btn" type="button" value="取消" onclick="javascript: window.location.href='getAllNews'">
+                        <td colspan="2" style="position: relative;left: 13%">
+                            <input class="login-btn" type="submit" value="注册">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="position: relative;left: 18%">
+                            <p style="color: black; font-size: 15px">已有账户？<a href="login.jsp">登录</a></p>
                         </td>
                     </tr>
                 </table>
@@ -127,8 +130,8 @@
 </div>
 </body>
 <script>
-    function canSave() {
-        return checkPasswordStrength()&&checkPasswordAgain();
+    function canRegister() {
+        return checkIdCanUse()&&checkPasswordStrength()&&checkPasswordAgain();
     }
 
     function checkPasswordStrength() {
@@ -155,6 +158,33 @@
             return true;
         }
     }
-
+    function crateXml() {
+        try {
+            return new XMLHttpRequest();
+        } catch (e) {
+            e.printStackTrace();
+            try {
+                return new ActiveObject("Microsoft.XMLHttp");
+            } catch (e) {
+                alert("浏览器版本过低");
+            }
+        }
+    }
+    function checkIdCanUse() {
+        let name = document.getElementById("author_id").value;
+        let msg = document.getElementById("author_id_msg");
+        let xmlHttp = crateXml();
+        xmlHttp.open("get", "existId?author_id=" + name, true);
+        xmlHttp.send(null);
+        xmlHttp.onreadystatechange = function () {
+            if (xmlHttp.readyState === 4 && xmlHttp.status === 200) {
+                msg.innerText = xmlHttp.responseText;
+                return xmlHttp.responseText === "此账号可用";
+            } else {
+                msg.innerText = "此账号可用";
+                return true;
+            }
+        };
+    }
 </script>
 </html>
