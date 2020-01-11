@@ -90,8 +90,6 @@
     <form action="saveAuthor" method="post" onsubmit="return canSave()">
         <div class="login-box">
             <form class="login-form">
-                <div class="hide-login-btn"><i class="fa fa-times" aria-hidden="true" onclick="javascript: window.location.href = 'getAllNews'"></i>
-                </div>
                 <h1 style="font-weight: bold">修改信息</h1>
                 <table border="0" style="position: relative;left: 4%">
                     <tr>
